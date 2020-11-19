@@ -18,11 +18,11 @@
 
 #include "AppTask.h"
 
-#include <platform/CHIPDeviceLayer.h>
-#include <support/CHIPMem.h>
 #include "pw_log/log.h"
 #include "pw_sys_io/sys_io.h"
 #include "pw_sys_io_nrfconnect/init.h"
+#include <platform/CHIPDeviceLayer.h>
+#include <support/CHIPMem.h>
 
 #include <kernel.h>
 
@@ -42,7 +42,7 @@ namespace chip {
 namespace rpc {
 extern void RunRpcService(void *, void *, void *);
 }
-}
+} // namespace chip
 
 namespace {
 #define ECHO_STACK_SIZE 4096
@@ -51,13 +51,13 @@ namespace {
 K_THREAD_STACK_DEFINE(echo_stack_area, ECHO_STACK_SIZE);
 struct k_thread echo_thread_data;
 
-}  // namespace
+} // namespace
 
 int main(void)
 {
     pw_sys_io_Init();
-    k_tid_t my_tid = k_thread_create(&echo_thread_data, echo_stack_area, K_THREAD_STACK_SIZEOF(echo_stack_area), chip::rpc::RunRpcService,
-                                     NULL, NULL, NULL, ECHO_PRIORITY, 0, K_NO_WAIT);
+    k_tid_t my_tid = k_thread_create(&echo_thread_data, echo_stack_area, K_THREAD_STACK_SIZEOF(echo_stack_area),
+                                     chip::rpc::RunRpcService, NULL, NULL, NULL, ECHO_PRIORITY, 0, K_NO_WAIT);
 
     int ret = 0;
 

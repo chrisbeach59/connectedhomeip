@@ -20,8 +20,8 @@
 
 #include "AppConfig.h"
 
-#include <zephyr.h>
 #include "pw_log/log.h"
+#include <zephyr.h>
 
 #ifndef CONFIG_USE_PW_LOG
 #include <logging/log.h>

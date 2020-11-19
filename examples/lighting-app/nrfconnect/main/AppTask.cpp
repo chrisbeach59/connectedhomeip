@@ -48,10 +48,9 @@
 #include "pw_rpc/echo_service_nanopb.h"
 #include "pw_rpc/server.h"
 
+#include "main/pigweed_lighting.rpc.pb.h"
 #include "pw_sys_io/sys_io.h"
 #include "pw_sys_io_nrfconnect/init.h"
-#include "main/pigweed_lighting.rpc.pb.h"
-
 
 #include <setup_payload/QRCodeSetupPayloadGenerator.h>
 #include <setup_payload/SetupPayload.h>
@@ -306,20 +305,20 @@ void AppTask::ButtonEventHandler(uint32_t button_state, uint32_t has_changed)
 namespace chip {
 namespace rpc {
 
-class LightingService final : public generated::LightingService<LightingService> {
- public:
-  pw::Status LightingEvent(ServerContext& ctx,
-                 const chip_rpc_Empty& request,
-                 chip_rpc_Empty& response) {
-    // implementation
-    AppEvent button_event;
-    button_event.Type = AppEvent::kEventType_Button;
-    button_event.ButtonEvent.PinNo  = LIGHTING_BUTTON;
-    button_event.ButtonEvent.Action = kButtonPushEvent;
-    button_event.Handler            = AppTask::LightingActionEventHandler;
-    AppTask::sAppTask.PostEvent(&button_event);
-    return pw::Status::OK;
-  }
+class LightingService final : public generated::LightingService<LightingService>
+{
+public:
+    pw::Status LightingEvent(ServerContext & ctx, const chip_rpc_Empty & request, chip_rpc_Empty & response)
+    {
+        // implementation
+        AppEvent button_event;
+        button_event.Type               = AppEvent::kEventType_Button;
+        button_event.ButtonEvent.PinNo  = LIGHTING_BUTTON;
+        button_event.ButtonEvent.Action = kButtonPushEvent;
+        button_event.Handler            = AppTask::LightingActionEventHandler;
+        AppTask::sAppTask.PostEvent(&button_event);
+        return pw::Status::OK;
+    }
 };
 
 using std::byte;
@@ -330,38 +329,36 @@ constexpr size_t kMaxTransmissionUnit = 1500;
 pw::stream::SysIoWriter writer;
 
 // Set up the output channel for the pw_rpc server to use to use.
-pw::hdlc_lite::RpcChannelOutputBuffer<kMaxTransmissionUnit> hdlc_channel_output(
-    writer, pw::hdlc_lite::kDefaultRpcAddress, "HDLC channel");
+pw::hdlc_lite::RpcChannelOutputBuffer<kMaxTransmissionUnit> hdlc_channel_output(writer, pw::hdlc_lite::kDefaultRpcAddress,
+                                                                                "HDLC channel");
 
-pw::rpc::Channel channels[] = {
-    pw::rpc::Channel::Create<1>(&hdlc_channel_output)};
+pw::rpc::Channel channels[] = { pw::rpc::Channel::Create<1>(&hdlc_channel_output) };
 
 // Declare the pw_rpc server with the HDLC channel.
 pw::rpc::Server server(channels);
 
 chip::rpc::LightingService lighting_service;
 
-void RegisterServices() {
+void RegisterServices()
+{
     server.RegisterService(lighting_service);
 }
 
-void Start() {
-  // Send log messages to HDLC address 1. This prevents logs from interfering
-  // with pw_rpc communications.
-  pw::log_basic::SetOutput([](std::string_view log) {
-    pw::hdlc_lite::WriteInformationFrame(
-        1, std::as_bytes(std::span(log)), writer);
-  });
+void Start()
+{
+    // Send log messages to HDLC address 1. This prevents logs from interfering
+    // with pw_rpc communications.
+    pw::log_basic::SetOutput(
+        [](std::string_view log) { pw::hdlc_lite::WriteInformationFrame(1, std::as_bytes(std::span(log)), writer); });
 
-  // Set up the server and start processing data.
-  RegisterServices();
+    // Set up the server and start processing data.
+    RegisterServices();
 
-  // Declare a buffer for decoding incoming HDLC frames.
-  std::array<std::byte, kMaxTransmissionUnit> input_buffer;
+    // Declare a buffer for decoding incoming HDLC frames.
+    std::array<std::byte, kMaxTransmissionUnit> input_buffer;
 
-  PW_LOG_INFO("Starting pw_rpc server");
-  pw::hdlc_lite::ReadAndProcessPackets(
-      server, hdlc_channel_output, input_buffer);
+    PW_LOG_INFO("Starting pw_rpc server");
+    pw::hdlc_lite::ReadAndProcessPackets(server, hdlc_channel_output, input_buffer);
 }
 
 void RunRpcService(void *, void *, void *)
@@ -369,8 +366,8 @@ void RunRpcService(void *, void *, void *)
     Start();
 }
 
-}  // namespace rpc
-}  // namespace chip
+} // namespace rpc
+} // namespace chip
 
 void AppTask::TimerEventHandler(k_timer * timer)
 {
