@@ -64,9 +64,7 @@ EOF
         pw_bootstrap --shell-file "$_SETUP_SH" \
             --install-dir "$_PW_ACTUAL_ENVIRONMENT_ROOT" \
             --virtualenv-requirements "$_CHIP_ROOT/scripts/requirements.txt" \
-            --cipd-package-file "$_CHIP_ROOT/scripts/pigweed.json" \
-            --virtualenv-setup-py-root "$_CHIP_ROOT/third_party/pigweed" \
-            --virtualenv-setup-py-root "$_CHIP_ROOT/integrations/mobly"
+            --cipd-package-file "$_CHIP_ROOT/scripts/pigweed.json"
         pw_finalize bootstrap "$_SETUP_SH"
     else
         pw_activate
