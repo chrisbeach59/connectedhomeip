@@ -23,7 +23,7 @@
  *      TODO This class should be extended to support TCP as well...
  *
  */
-
+#include <ctype.h>
 #include "SecureSessionMgr.h"
 
 #include <inttypes.h>

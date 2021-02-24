@@ -164,6 +164,7 @@ CHIP_ERROR NetworkProvisioning::DecodeString(const uint8_t * input, size_t input
     CHIP_ERROR err  = CHIP_NO_ERROR;
     uint16_t length = 0;
 
+    char temp = '\0';
     VerifyOrExit(input_len >= sizeof(uint16_t), err = CHIP_ERROR_BUFFER_TOO_SMALL);
     length   = chip::Encoding::LittleEndian::Get16(input);
     consumed = sizeof(uint16_t);
@@ -172,7 +173,7 @@ CHIP_ERROR NetworkProvisioning::DecodeString(const uint8_t * input, size_t input
     bbuf.Put(&input[consumed], length);
 
     consumed += bbuf.Needed();
-    bbuf.Put('\0');
+    bbuf.Put(temp);
 
     VerifyOrExit(bbuf.Fit(), err = CHIP_ERROR_BUFFER_TOO_SMALL);
 

@@ -27,6 +27,8 @@
  *      (https://www.ietf.org/id/draft-bar-cfrg-spake2plus-01.html)
  *
  */
+#include <ctype.h>
+#include <string.h>
 #include <transport/PASESession.h>
 
 #include <inttypes.h>
@@ -115,7 +117,8 @@ CHIP_ERROR PASESession::Deserialize(PASESessionSerialized & input)
     CHIP_ERROR error = CHIP_NO_ERROR;
     PASESessionSerializable serializable;
     size_t maxlen            = BASE64_ENCODED_LEN(sizeof(serializable));
-    size_t len               = strnlen(Uint8::to_char(input.inner), maxlen);
+    //size_t len               = strnlen(Uint8::to_char(input.inner), maxlen);
+    size_t len               = strlen (Uint8::to_char(input.inner)) < maxlen ? strlen (Uint8::to_char(input.inner)) : maxlen ;
     uint16_t deserializedLen = 0;
 
     VerifyOrExit(len < sizeof(PASESessionSerialized), error = CHIP_ERROR_INVALID_ARGUMENT);
