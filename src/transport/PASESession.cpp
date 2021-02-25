@@ -27,7 +27,6 @@
  *      (https://www.ietf.org/id/draft-bar-cfrg-spake2plus-01.html)
  *
  */
-#include <ctype.h>
 #include <string.h>
 #include <transport/PASESession.h>
 

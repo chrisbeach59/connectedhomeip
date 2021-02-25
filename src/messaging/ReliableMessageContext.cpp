@@ -21,7 +21,6 @@
  *
  */
 
-#include <ctype.h>
 #include <inttypes.h>
 
 #include <messaging/ExchangeContext.h>

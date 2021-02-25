@@ -30,7 +30,6 @@
 #define __STDC_FORMAT_MACROS
 #endif
 
-#include <ctype.h>
 #include "CHIPArgParser.hpp"
 
 #if CHIP_CONFIG_ENABLE_ARG_PARSER

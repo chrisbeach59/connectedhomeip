@@ -27,7 +27,6 @@
  *
  */
 
-#include <ctype.h>
 #include "Base41.h"
 
 #include <climits>

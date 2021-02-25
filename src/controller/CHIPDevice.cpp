@@ -24,6 +24,7 @@
  *    messages to and from the corresponding CHIP devices.
  */
 
+#include <string.h>
 #include <controller/CHIPDevice.h>
 
 #if CONFIG_DEVICE_LAYER
@@ -176,7 +177,8 @@ CHIP_ERROR Device::Deserialize(const SerializedDevice & input)
     CHIP_ERROR error = CHIP_NO_ERROR;
     SerializableDevice serializable;
     size_t maxlen            = BASE64_ENCODED_LEN(sizeof(serializable));
-    size_t len               = strnlen(Uint8::to_const_char(&input.inner[0]), maxlen);
+    //size_t len               = strnlen(Uint8::to_const_char(&input.inner[0]), maxlen);
+    size_t len               = strlen (Uint8::to_const_char(&input.inner[0])) < maxlen ? strlen (Uint8::to_const_char(&input.inner[0])) : maxlen ;
     uint16_t deserializedLen = 0;
 
     VerifyOrExit(len < sizeof(SerializedDevice), error = CHIP_ERROR_INVALID_ARGUMENT);
