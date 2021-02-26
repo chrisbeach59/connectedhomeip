@@ -164,6 +164,11 @@ void GenericPlatformManagerImpl_FreeRTOS<ImplClass>::_RunEventLoop(void)
         Impl()->UnlockChipStack();
 
         BaseType_t eventReceived = xQueueReceive(mChipEventQueue, &event, waitTime);
+        if (eventReceived == pdTRUE)
+            printf("Event Received 1\r\n");
+        else
+            printf("Event Timeout 1\r\n");
+
 
         // Lock the CHIP stack.
         Impl()->LockChipStack();
@@ -175,6 +180,11 @@ void GenericPlatformManagerImpl_FreeRTOS<ImplClass>::_RunEventLoop(void)
             Impl()->DispatchEvent(&event);
 
             eventReceived = xQueueReceive(mChipEventQueue, &event, 0);
+            if (eventReceived == pdTRUE)
+                printf("Event Received 2\r\n");
+            else
+                printf("No Event 2\r\n");
+
         }
     }
 }
