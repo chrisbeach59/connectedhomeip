@@ -16,7 +16,6 @@
  */
 
 #pragma once
-
 #include <support/BufferWriter.h>
 
 #include <mdns/minimal/core/Constants.h>
@@ -80,7 +79,7 @@ public:
 private:
     const FullQName mQName;
     QType mType            = QType::ANY;
-    QClass mClass          = QClass::IN;
+    QClass mClass          = QClass::ANY;
     bool mAnswerViaUnicast = true;
 };
 
