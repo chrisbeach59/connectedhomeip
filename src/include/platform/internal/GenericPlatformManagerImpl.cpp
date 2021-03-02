@@ -177,25 +177,30 @@ void GenericPlatformManagerImpl<ImplClass>::_DispatchEvent(const ChipDeviceEvent
 #if CHIP_PROGRESS_LOGGING
     uint64_t startUS = System::Layer::GetClock_MonotonicHiRes();
 #endif // CHIP_PROGRESS_LOGGING
-
+    ChipLogProgress(DeviceLayer, "In _DispatchEvent()");
     switch (event->Type)
     {
     case DeviceEventType::kNoOp:
         // Do nothing for no-op events.
+        ChipLogProgress(DeviceLayer, "DeviceEventType::kNoOp");
         break;
 
     case DeviceEventType::kChipSystemLayerEvent:
         // If the event is a CHIP System or Inet Layer event, deliver it to the SystemLayer event handler.
+        ChipLogProgress(DeviceLayer, "DeviceEventType::kChipSystemLayerEvent");
         Impl()->DispatchEventToSystemLayer(event);
         break;
 
     case DeviceEventType::kCallWorkFunct:
         // If the event is a "call work function" event, call the specified function.
+        ChipLogProgress(DeviceLayer, "DeviceEventType::kCallWorkFunct");
         event->CallWorkFunct.WorkFunct(event->CallWorkFunct.Arg);
         break;
 
     default:
         // For all other events, deliver the event to each of the components in the Device Layer.
+        ChipLogProgress(DeviceLayer, "DeviceEventType::default");
+
         Impl()->DispatchEventToDeviceLayer(event);
 
         // If the event is not an internal event, also deliver it to the application's registered
@@ -222,8 +227,11 @@ template <class ImplClass>
 void GenericPlatformManagerImpl<ImplClass>::DispatchEventToSystemLayer(const ChipDeviceEvent * event)
 {
     // TODO(#788): remove ifdef LWIP once SystemLayer event APIs are generally available
+    ChipLogProgress(DeviceLayer, "DispatchEventToSystemLayer()");
+
 #if CHIP_SYSTEM_CONFIG_USE_LWIP
     CHIP_ERROR err = CHIP_NO_ERROR;
+    ChipLogProgress(DeviceLayer, "DispatchEventToSystemLayer() - USE_LWIP");
 
     // Invoke the System Layer's event handler function.
     err = SystemLayer.HandleEvent(*event->ChipSystemLayerEvent.Target, event->ChipSystemLayerEvent.Type,
@@ -238,6 +246,8 @@ void GenericPlatformManagerImpl<ImplClass>::DispatchEventToSystemLayer(const Chi
 template <class ImplClass>
 void GenericPlatformManagerImpl<ImplClass>::DispatchEventToDeviceLayer(const ChipDeviceEvent * event)
 {
+    ChipLogProgress(DeviceLayer, "DispatchEventToDeviceLayer()");
+
     // Dispatch the event to all the components in the Device Layer.
 #if CHIP_DEVICE_CONFIG_ENABLE_CHIPOBLE
     BLEMgr().OnPlatformEvent(event);
@@ -251,6 +261,7 @@ void GenericPlatformManagerImpl<ImplClass>::DispatchEventToDeviceLayer(const Chi
 template <class ImplClass>
 void GenericPlatformManagerImpl<ImplClass>::DispatchEventToApplication(const ChipDeviceEvent * event)
 {
+    ChipLogProgress(DeviceLayer, "DispatchEventToApplication()");
     // Dispatch the event to each of the registered application event handlers.
     for (AppEventHandler * eventHandler = mAppEventHandlerList; eventHandler != nullptr; eventHandler = eventHandler->Next)
     {

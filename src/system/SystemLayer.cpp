@@ -894,6 +894,8 @@ Error Layer::HandleEvent(Object & aTarget, EventType aEventType, uintptr_t aArgu
     // Prevent the target object from being freed while dispatching the event.
     aTarget.Retain();
 
+    ChipLogProgress(DeviceLayer, "Layer::HandleEvent() - Ready to Process");
+
     while (lReturn == CHIP_SYSTEM_ERROR_UNEXPECTED_EVENT && lEventDelegate != NULL)
     {
         lReturn        = lEventDelegate->mFunction(aTarget, aEventType, aArgument);
