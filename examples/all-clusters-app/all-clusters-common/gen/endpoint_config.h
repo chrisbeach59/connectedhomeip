@@ -20,6 +20,8 @@
 // Prevent multiple inclusion
 #pragma once
 
+
+
 // Default values for the attributes longer than a pointer,
 // in a form of a binary blob
 // Separate block is generated for big-endian and little-endian cases.
@@ -101,6 +103,7 @@
             0x00, 0x00, 0x00, 0x00, 0x00,                                                                                          \
             0x00, /* Default for cluster: "Basic", attribute: "SoftwareVersionString". side: server, big-endian */                 \
     }
+
 
 #else // !BIGENDIAN_CPU
 #define GENERATED_DEFAULTS                                                                                                         \
@@ -187,23 +190,17 @@
 
 #define GENERATED_DEFAULTS_COUNT (21)
 
-#define ZAP_TYPE(type) ZCL_##type##_ATTRIBUTE_TYPE
-#define ZAP_LONG_DEFAULTS_INDEX(index)                                                                                             \
-    {                                                                                                                              \
-        (uint8_t *) (&generatedDefaults[index])                                                                                    \
-    }
-#define ZAP_MIN_MAX_DEFAULTS_INDEX(index)                                                                                          \
-    {                                                                                                                              \
-        (uint8_t *) (&minMaxDefault[index])                                                                                        \
-    }
+#define ZAP_TYPE(type) ZCL_ ## type ## _ATTRIBUTE_TYPE
+#define ZAP_LONG_DEFAULTS_INDEX(index) {(uint8_t*)(&generatedDefaults[index])}
+#define ZAP_MIN_MAX_DEFAULTS_INDEX(index) {(uint8_t*)(&minMaxDefault[index])}
 
 // This is an array of EmberAfAttributeMinMaxValue structures.
 #define GENERATED_MIN_MAX_DEFAULT_COUNT 0
-#define GENERATED_MIN_MAX_DEFAULTS                                                                                                 \
-    {                                                                                                                              \
-    }
+#define GENERATED_MIN_MAX_DEFAULTS { \
+}
 
-#define ZAP_ATTRIBUTE_MASK(mask) ATTRIBUTE_MASK_##mask
+
+#define ZAP_ATTRIBUTE_MASK(mask) ATTRIBUTE_MASK_ ## mask
 // This is an array of EmberAfAttributeMetadata structures.
 #define GENERATED_ATTRIBUTE_COUNT 126
 #define GENERATED_ATTRIBUTES                                                                                                       \
@@ -428,38 +425,39 @@
             }, /* Basic (server): SoftwareVersionString */                                                                         \
     }
 
+
 // This is an array of EmberAfCluster structures.
-#define ZAP_ATTRIBUTE_INDEX(index) ((EmberAfAttributeMetadata *) (&generatedAttributes[index]))
+#define ZAP_ATTRIBUTE_INDEX(index) ((EmberAfAttributeMetadata *)(&generatedAttributes[index]))
 
 // Cluster function static arrays
-#define GENERATED_FUNCTION_ARRAYS                                                                                                  \
-    const EmberAfGenericClusterFunction chipFuncArrayIdentifyServer[] = {                                                          \
-        (EmberAfGenericClusterFunction) emberAfIdentifyClusterServerInitCallback,                                                  \
-        (EmberAfGenericClusterFunction) emberAfIdentifyClusterServerAttributeChangedCallback,                                      \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayGroupsServer[] = {                                                            \
-        (EmberAfGenericClusterFunction) emberAfGroupsClusterServerInitCallback,                                                    \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayScenesServer[] = {                                                            \
-        (EmberAfGenericClusterFunction) emberAfScenesClusterServerInitCallback,                                                    \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayOnOffServer[] = {                                                             \
-        (EmberAfGenericClusterFunction) emberAfOnOffClusterServerInitCallback,                                                     \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayLevelControlServer[] = {                                                      \
-        (EmberAfGenericClusterFunction) emberAfLevelControlClusterServerInitCallback,                                              \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayDoorLockServer[] = {                                                          \
-        (EmberAfGenericClusterFunction) emberAfDoorLockClusterServerAttributeChangedCallback,                                      \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayColorControlServer[] = {                                                      \
-        (EmberAfGenericClusterFunction) emberAfColorControlClusterServerInitCallback,                                              \
-    };                                                                                                                             \
-    const EmberAfGenericClusterFunction chipFuncArrayIasZoneServer[] = {                                                           \
-        (EmberAfGenericClusterFunction) emberAfIasZoneClusterServerInitCallback,                                                   \
-        (EmberAfGenericClusterFunction) emberAfIasZoneClusterServerMessageSentCallback,                                            \
-        (EmberAfGenericClusterFunction) emberAfIasZoneClusterServerPreAttributeChangedCallback,                                    \
-    };
+#define GENERATED_FUNCTION_ARRAYS   \
+const EmberAfGenericClusterFunction chipFuncArrayIdentifyServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfIdentifyClusterServerInitCallback,\
+  (EmberAfGenericClusterFunction) emberAfIdentifyClusterServerAttributeChangedCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayGroupsServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfGroupsClusterServerInitCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayScenesServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfScenesClusterServerInitCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayOnOffServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfOnOffClusterServerInitCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayLevelControlServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfLevelControlClusterServerInitCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayDoorLockServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfDoorLockClusterServerAttributeChangedCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayColorControlServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfColorControlClusterServerInitCallback,\
+};\
+const EmberAfGenericClusterFunction chipFuncArrayIasZoneServer[] = {\
+  (EmberAfGenericClusterFunction) emberAfIasZoneClusterServerInitCallback,\
+  (EmberAfGenericClusterFunction) emberAfIasZoneClusterServerMessageSentCallback,\
+  (EmberAfGenericClusterFunction) emberAfIasZoneClusterServerPreAttributeChangedCallback,\
+};\
 
 #define ZAP_CLUSTER_MASK(mask) CLUSTER_MASK_##mask
 #define GENERATED_CLUSTER_COUNT 19
@@ -552,13 +550,42 @@
             }, /* Endpoint: 2, Cluster: Basic (server) */                                                                          \
     }
 
-#define ZAP_CLUSTER_INDEX(index) ((EmberAfCluster *) (&generatedClusters[index]))
+
+#define ZAP_CLUSTER_MASK(mask) CLUSTER_MASK_ ## mask
+#define GENERATED_CLUSTER_COUNT 19
+#define GENERATED_CLUSTERS { \
+  { 0x0000, ZAP_ATTRIBUTE_INDEX(0), 3, 4, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Basic (server) */ \
+  { 0x0003, ZAP_ATTRIBUTE_INDEX(3), 2, 4, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION) | ZAP_CLUSTER_MASK(ATTRIBUTE_CHANGED_FUNCTION), chipFuncArrayIdentifyServer }, /* Endpoint: 1, Cluster: Identify (server) */ \
+  { 0x0004, ZAP_ATTRIBUTE_INDEX(5), 2, 3, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION), chipFuncArrayGroupsServer }, /* Endpoint: 1, Cluster: Groups (server) */ \
+  { 0x0005, ZAP_ATTRIBUTE_INDEX(7), 6, 8, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION), chipFuncArrayScenesServer }, /* Endpoint: 1, Cluster: Scenes (server) */ \
+  { 0x0006, ZAP_ATTRIBUTE_INDEX(13), 2, 3, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION), chipFuncArrayOnOffServer }, /* Endpoint: 1, Cluster: On/off (server) */ \
+  { 0x0008, ZAP_ATTRIBUTE_INDEX(15), 2, 3, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION), chipFuncArrayLevelControlServer }, /* Endpoint: 1, Cluster: Level Control (server) */ \
+  { 0x0030, ZAP_ATTRIBUTE_INDEX(17), 3, 18, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: General Commissioning (server) */ \
+  { 0x0101, ZAP_ATTRIBUTE_INDEX(20), 4, 5, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(ATTRIBUTE_CHANGED_FUNCTION), chipFuncArrayDoorLockServer }, /* Endpoint: 1, Cluster: Door Lock (server) */ \
+  { 0x0103, ZAP_ATTRIBUTE_INDEX(24), 5, 7, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Barrier Control (server) */ \
+  { 0x0201, ZAP_ATTRIBUTE_INDEX(29), 6, 10, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Thermostat (server) */ \
+  { 0x0300, ZAP_ATTRIBUTE_INDEX(35), 51, 336, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION), chipFuncArrayColorControlServer }, /* Endpoint: 1, Cluster: Color Control (server) */ \
+  { 0x0402, ZAP_ATTRIBUTE_INDEX(86), 4, 8, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Temperature Measurement (server) */ \
+  { 0x0500, ZAP_ATTRIBUTE_INDEX(90), 6, 16, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION) | ZAP_CLUSTER_MASK(PRE_ATTRIBUTE_CHANGED_FUNCTION) | ZAP_CLUSTER_MASK(MESSAGE_SENT_FUNCTION), chipFuncArrayIasZoneServer }, /* Endpoint: 1, Cluster: IAS Zone (server) */ \
+  { 0x050D, ZAP_ATTRIBUTE_INDEX(96), 8, 105, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Application Basic (server) */ \
+  { 0xF000, ZAP_ATTRIBUTE_INDEX(104), 1, 2, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Binding (server) */ \
+  { 0xF001, ZAP_ATTRIBUTE_INDEX(105), 2, 4, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Media Playback (server) */ \
+  { 0xF002, ZAP_ATTRIBUTE_INDEX(107), 1, 2, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 1, Cluster: Content Launch (server) */ \
+  { 0x0000, ZAP_ATTRIBUTE_INDEX(108), 3, 4, ZAP_CLUSTER_MASK(SERVER), NULL }, /* Endpoint: 2, Cluster: Basic (server) */ \
+  { 0x0006, ZAP_ATTRIBUTE_INDEX(111), 2, 3, ZAP_CLUSTER_MASK(SERVER) | ZAP_CLUSTER_MASK(INIT_FUNCTION), chipFuncArrayOnOffServer }, /* Endpoint: 2, Cluster: On/off (server) */ \
+}
+
+
+#define ZAP_CLUSTER_INDEX(index) ((EmberAfCluster*)(&generatedClusters[index]))
+
 
 // This is an array of EmberAfEndpointType structures.
 #define GENERATED_ENDPOINT_TYPES                                                                                                   \
     {                                                                                                                              \
         { ZAP_CLUSTER_INDEX(0), 17, 780 }, { ZAP_CLUSTER_INDEX(17), 2, 257 },                                                      \
     }
+
+
 
 // Largest attribute size is needed for various buffers
 #define ATTRIBUTE_LARGEST (254)
@@ -574,40 +601,23 @@
 
 // Array of endpoints that are supported, the data inside
 // the array is the endpoint number.
-#define FIXED_ENDPOINT_ARRAY                                                                                                       \
-    {                                                                                                                              \
-        0x0001, 0x0002                                                                                                             \
-    }
+#define FIXED_ENDPOINT_ARRAY { 0x0001, 0x0002 }
 
 // Array of profile ids
-#define FIXED_PROFILE_IDS                                                                                                          \
-    {                                                                                                                              \
-        0x0103, 0x0103                                                                                                             \
-    }
+#define FIXED_PROFILE_IDS { 0x0103, 0x0103 }
 
 // Array of device ids
-#define FIXED_DEVICE_IDS                                                                                                           \
-    {                                                                                                                              \
-        0, 0                                                                                                                       \
-    }
+#define FIXED_DEVICE_IDS { 0, 0 }
 
 // Array of device versions
-#define FIXED_DEVICE_VERSIONS                                                                                                      \
-    {                                                                                                                              \
-        1, 1                                                                                                                       \
-    }
+#define FIXED_DEVICE_VERSIONS { 1, 1 }
 
 // Array of endpoint types supported on each endpoint
-#define FIXED_ENDPOINT_TYPES                                                                                                       \
-    {                                                                                                                              \
-        0, 1                                                                                                                       \
-    }
+#define FIXED_ENDPOINT_TYPES { 0, 1 }
 
 // Array of networks supported on each endpoint
-#define FIXED_NETWORKS                                                                                                             \
-    {                                                                                                                              \
-        0, 0                                                                                                                       \
-    }
+#define FIXED_NETWORKS { 0, 0 }
+
 
 // Array of EmberAfCommandMetadata structs.
 #define ZAP_COMMAND_MASK(mask) COMMAND_MASK_##mask
@@ -780,6 +790,7 @@
             { 0xF002, 0x01, ZAP_COMMAND_MASK(INCOMING_CLIENT) }, /* Content Launch (server): LaunchURLResponse */                  \
     }
 
+
 // Array of EmberAfManufacturerCodeEntry structures for commands.
 #define GENERATED_COMMAND_MANUFACTURER_CODE_COUNT (1)
 #define GENERATED_COMMAND_MANUFACTURER_CODES                                                                                       \
@@ -787,65 +798,44 @@
         { 40, 4098 },                                                                                                              \
     }
 
+
 // This is an array of EmberAfManufacturerCodeEntry structures for clusters.
 #define GENERATED_CLUSTER_MANUFACTURER_CODE_COUNT (0)
-#define GENERATED_CLUSTER_MANUFACTURER_CODES                                                                                       \
-    {                                                                                                                              \
-        {                                                                                                                          \
-            0x00, 0x00                                                                                                             \
-        }                                                                                                                          \
-    }
+#define GENERATED_CLUSTER_MANUFACTURER_CODES { \
+  { 0x00, 0x00 } \
+}
+
 
 // This is an array of EmberAfManufacturerCodeEntry structures for attributes.
 #define GENERATED_ATTRIBUTE_MANUFACTURER_CODE_COUNT (0)
-#define GENERATED_ATTRIBUTE_MANUFACTURER_CODES                                                                                     \
-    {                                                                                                                              \
-        {                                                                                                                          \
-            0x00, 0x00                                                                                                             \
-        }                                                                                                                          \
-    }
+#define GENERATED_ATTRIBUTE_MANUFACTURER_CODES { \
+  { 0x00, 0x00 } \
+}
+
 
 // Array of EmberAfPluginReportingEntry structures.
-#define ZRD(x) EMBER_ZCL_REPORTING_DIRECTION_##x
+#define ZRD(x) EMBER_ZCL_REPORTING_DIRECTION_ ## x
 #define ZAP_REPORT_DIRECTION(x) ZRD(x)
 
 // Use this macro to check if Reporting plugin is included
 #define EMBER_AF_PLUGIN_REPORTING
 // User options for plugin Reporting
-#define EMBER_AF_PLUGIN_REPORTING_TABLE_SIZE (10)
+#define EMBER_AF_PLUGIN_REPORTING_TABLE_SIZE (11)
 #define EMBER_AF_PLUGIN_REPORTING_ENABLE_GROUP_BOUND_REPORTS
 
-#define EMBER_AF_GENERATED_REPORTING_CONFIG_DEFAULTS_TABLE_SIZE (10)
-#define EMBER_AF_GENERATED_REPORTING_CONFIG_DEFAULTS                                                                               \
-    {                                                                                                                              \
-        {                                                                                                                          \
-            ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0006, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }          \
-        }, /* Reporting for cluster: "On/off", attribute: "on/off". side: server */                                                \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0008, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Level Control", attribute: "current level". side: server */                              \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0101, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Door Lock", attribute: "lock state". side: server */                                     \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Color Control", attribute: "current hue". side: server */                                \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0001, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Color Control", attribute: "current saturation". side: server */                         \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0003, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Color Control", attribute: "current x". side: server */                                  \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0004, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Color Control", attribute: "current y". side: server */                                  \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0007, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Color Control", attribute: "color temperature". side: server */                          \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0402, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "Temperature Measurement", attribute: "measured value". side: server */                   \
-            {                                                                                                                      \
-                ZAP_REPORT_DIRECTION(REPORTED), 0x0002, 0x0006, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, { { 0, 65344, 0 } }      \
-            }, /* Reporting for cluster: "On/off", attribute: "on/off". side: server */                                            \
-    }
+#define EMBER_AF_GENERATED_REPORTING_CONFIG_DEFAULTS_TABLE_SIZE (11)
+#define EMBER_AF_GENERATED_REPORTING_CONFIG_DEFAULTS { \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0006, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "On/off", attribute: "on/off". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0008, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Level Control", attribute: "current level". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0101, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Door Lock", attribute: "lock state". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0201, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Thermostat", attribute: "local temperature". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Color Control", attribute: "current hue". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0001, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Color Control", attribute: "current saturation". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0003, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Color Control", attribute: "current x". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0004, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Color Control", attribute: "current y". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0300, 0x0007, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Color Control", attribute: "color temperature". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0001, 0x0402, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "Temperature Measurement", attribute: "measured value". side: server */ \
+  { ZAP_REPORT_DIRECTION(REPORTED), 0x0002, 0x0006, 0x0000, ZAP_CLUSTER_MASK(SERVER), 0x0000, {{ 0, 65344, 0 }} }, /* Reporting for cluster: "On/off", attribute: "on/off". side: server */ \
+}
+
+

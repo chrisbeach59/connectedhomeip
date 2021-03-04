@@ -2107,10 +2107,10 @@
           ]
         },
         {
-          "name": "Color Control",
-          "code": 768,
+          "name": "Thermostat",
+          "code": 513,
           "mfgCode": null,
-          "define": "COLOR_CONTROL_CLUSTER",
+          "define": "THERMOSTAT_CLUSTER",
           "side": "client",
           "enabled": 1,
           "commands": [
@@ -3827,5 +3827,6 @@
       "endpointId": 1,
       "networkId": 0
     }
-  ]
+  ],
+  "log": []
 }

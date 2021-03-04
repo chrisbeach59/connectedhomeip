@@ -20,10 +20,10 @@
 #include "gen/CHIPClientCallbacks.h"
 
 #include "gen/enums.h"
-#include <app/util/CHIPDeviceCallbacksMgr.h>
-#include <app/util/af-enums.h>
 #include <app/util/af.h>
+#include <app/util/af-enums.h>
 #include <app/util/basic-types.h>
+#include <app/util/CHIPDeviceCallbacksMgr.h>
 #include <core/CHIPEncoding.h>
 #include <support/SafeInt.h>
 #include <support/logging/CHIPLogging.h>
@@ -212,14 +212,12 @@ bool emberAfDefaultResponseCallback(ClusterId clusterId, CommandId commandId, Em
     GET_RESPONSE_CALLBACKS("emberAfDefaultResponseCallback");
     if (status == EMBER_ZCL_STATUS_SUCCESS)
     {
-        Callback::Callback<DefaultSuccessCallback> * cb =
-            Callback::Callback<DefaultSuccessCallback>::FromCancelable(onSuccessCallback);
+        Callback::Callback<DefaultSuccessCallback> * cb = Callback::Callback<DefaultSuccessCallback>::FromCancelable(onSuccessCallback);
         cb->mCall(cb->mContext);
     }
     else
     {
-        Callback::Callback<DefaultFailureCallback> * cb =
-            Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
+        Callback::Callback<DefaultFailureCallback> * cb = Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
         cb->mCall(cb->mContext, static_cast<uint8_t>(status));
     }
 
@@ -336,132 +334,122 @@ bool emberAfReadAttributesResponseCallback(ClusterId clusterId, uint8_t * messag
                 uint8_t value = chip::Encoding::Read8(message);
                 ChipLogProgress(Zcl, "  value: 0x%02x", value);
 
-                Callback::Callback<Int8uAttributeCallback> * cb =
-                    Callback::Callback<Int8uAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int8uAttributeCallback> * cb = Callback::Callback<Int8uAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x09: // data16 / 16-bit data
-            case 0x19: // map16 / 16-bit bitmap
-            case 0x21: // uint16 / Unsigned 16-bit integer
-            case 0x31: // enum16 / 16-bit enumeration
-            case 0xE8: // clusterId / Cluster ID
-            case 0xE9: // attribId / Attribute ID
-            case 0xEA: // bacOID / BACnet OID
-            case 0xF1: // key128 / 128-bit security key
-            case 0xFF: // unk / Unknown
-            {
-                CHECK_MESSAGE_LENGTH(2);
-                uint16_t value = chip::Encoding::LittleEndian::Read16(message);
-                ChipLogProgress(Zcl, "  value: 0x%04x", value);
+                case 0x09: // data16 / 16-bit data
+                case 0x19: // map16 / 16-bit bitmap
+                case 0x21: // uint16 / Unsigned 16-bit integer
+                case 0x31: // enum16 / 16-bit enumeration
+                case 0xE8: // clusterId / Cluster ID
+                case 0xE9: // attribId / Attribute ID
+                case 0xEA: // bacOID / BACnet OID
+                case 0xF1: // key128 / 128-bit security key
+                case 0xFF: // unk / Unknown
+                {
+                    CHECK_MESSAGE_LENGTH(2);
+                    uint16_t value = chip::Encoding::LittleEndian::Read16(message);
+                    ChipLogProgress(Zcl, "  value: 0x%04x", value);
 
-                Callback::Callback<Int16uAttributeCallback> * cb =
-                    Callback::Callback<Int16uAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int16uAttributeCallback> * cb = Callback::Callback<Int16uAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x0B: // data32 / 32-bit data
-            case 0x1B: // map32 / 32-bit bitmap
-            case 0x23: // uint32 / Unsigned 32-bit integer
-            case 0xE1: // date / Date
-            case 0xE2: // UTC / UTCTime
-            {
-                CHECK_MESSAGE_LENGTH(4);
-                uint32_t value = chip::Encoding::LittleEndian::Read32(message);
-                ChipLogProgress(Zcl, "  value: 0x%08x", value);
+                case 0x0B: // data32 / 32-bit data
+                case 0x1B: // map32 / 32-bit bitmap
+                case 0x23: // uint32 / Unsigned 32-bit integer
+                case 0xE1: // date / Date
+                case 0xE2: // UTC / UTCTime
+                {
+                    CHECK_MESSAGE_LENGTH(4);
+                    uint32_t value = chip::Encoding::LittleEndian::Read32(message);
+                    ChipLogProgress(Zcl, "  value: 0x%08x", value);
 
-                Callback::Callback<Int32uAttributeCallback> * cb =
-                    Callback::Callback<Int32uAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int32uAttributeCallback> * cb = Callback::Callback<Int32uAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x0F: // data64 / 64-bit data
-            case 0x1F: // map64 / 64-bit bitmap
-            case 0x27: // uint64 / Unsigned 64-bit integer
-            case 0xF0: // EUI64 / IEEE address
-            {
-                CHECK_MESSAGE_LENGTH(8);
-                uint64_t value = chip::Encoding::LittleEndian::Read64(message);
-                ChipLogProgress(Zcl, "  value: 0x%16x", value);
+                case 0x0F: // data64 / 64-bit data
+                case 0x1F: // map64 / 64-bit bitmap
+                case 0x27: // uint64 / Unsigned 64-bit integer
+                case 0xF0: // EUI64 / IEEE address
+                {
+                    CHECK_MESSAGE_LENGTH(8);
+                    uint64_t value = chip::Encoding::LittleEndian::Read64(message);
+                    ChipLogProgress(Zcl, "  value: 0x%16x", value);
 
-                Callback::Callback<Int64uAttributeCallback> * cb =
-                    Callback::Callback<Int64uAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int64uAttributeCallback> * cb = Callback::Callback<Int64uAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x10: // bool / Boolean
-            {
-                CHECK_MESSAGE_LENGTH(1);
-                uint8_t value = chip::Encoding::Read8(message);
-                ChipLogProgress(Zcl, "  value: %d", value);
+                case 0x10: // bool / Boolean
+                {
+                    CHECK_MESSAGE_LENGTH(1);
+                    uint8_t value = chip::Encoding::Read8(message);
+                    ChipLogProgress(Zcl, "  value: %d", value);
 
-                Callback::Callback<BooleanAttributeCallback> * cb =
-                    Callback::Callback<BooleanAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<BooleanAttributeCallback> * cb = Callback::Callback<BooleanAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x28: // int8 / Signed 8-bit integer
-            {
-                CHECK_MESSAGE_LENGTH(1);
-                int8_t value = chip::CastToSigned(chip::Encoding::Read8(message));
-                ChipLogProgress(Zcl, "  value: %" PRId8, value);
+                case 0x28: // int8 / Signed 8-bit integer
+                {
+                    CHECK_MESSAGE_LENGTH(1);
+                    int8_t value = chip::CastToSigned(chip::Encoding::Read8(message));
+                    ChipLogProgress(Zcl, "  value: %" PRId8, value);
 
-                Callback::Callback<Int8sAttributeCallback> * cb =
-                    Callback::Callback<Int8sAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int8sAttributeCallback> * cb = Callback::Callback<Int8sAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x29: // int16 / Signed 16-bit integer
-            {
-                CHECK_MESSAGE_LENGTH(2);
-                int16_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read16(message));
-                ChipLogProgress(Zcl, "  value: %" PRId16, value);
+                case 0x29: // int16 / Signed 16-bit integer
+                {
+                    CHECK_MESSAGE_LENGTH(2);
+                    int16_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read16(message));
+                    ChipLogProgress(Zcl, "  value: %" PRId16, value);
 
-                Callback::Callback<Int16sAttributeCallback> * cb =
-                    Callback::Callback<Int16sAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int16sAttributeCallback> * cb = Callback::Callback<Int16sAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x2B: // int32 / Signed 32-bit integer
-            {
-                CHECK_MESSAGE_LENGTH(4);
-                int32_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read32(message));
-                ChipLogProgress(Zcl, "  value: %" PRId32, value);
+                case 0x2B: // int32 / Signed 32-bit integer
+                {
+                    CHECK_MESSAGE_LENGTH(4);
+                    int32_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read32(message));
+                    ChipLogProgress(Zcl, "  value: %" PRId32, value);
 
-                Callback::Callback<Int32sAttributeCallback> * cb =
-                    Callback::Callback<Int32sAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int32sAttributeCallback> * cb = Callback::Callback<Int32sAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
 
-            case 0x2F: // int64 / Signed 64-bit integer
-            {
-                CHECK_MESSAGE_LENGTH(8);
-                int64_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read64(message));
-                ChipLogProgress(Zcl, "  value: %" PRId64, value);
+                case 0x2F: // int64 / Signed 64-bit integer
+                {
+                    CHECK_MESSAGE_LENGTH(8);
+                    int64_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read64(message));
+                    ChipLogProgress(Zcl, "  value: %" PRId64, value);
 
-                Callback::Callback<Int64sAttributeCallback> * cb =
-                    Callback::Callback<Int64sAttributeCallback>::FromCancelable(onSuccessCallback);
-                cb->mCall(cb->mContext, value);
-                break;
-            }
+                    Callback::Callback<Int64sAttributeCallback> * cb = Callback::Callback<Int64sAttributeCallback>::FromCancelable(onSuccessCallback);
+                    cb->mCall(cb->mContext, value);
+                    break;
+                }
             }
         }
         else
         {
-            Callback::Callback<DefaultFailureCallback> * cb =
-                Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
+            Callback::Callback<DefaultFailureCallback> * cb = Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
             cb->mCall(cb->mContext, status);
         }
 
-        // The current code is written matching the current API where there is a single attribute read
+        // The current code is written matching the current API where there is a single attribute read 
         // per read command. So if multiple attributes are read at the same time, something is wrong
         // somewhere.
         if (messageLen)
@@ -490,8 +478,7 @@ bool emberAfWriteAttributesResponseCallback(ClusterId clusterId, uint8_t * messa
 
         if (status == EMBER_ZCL_STATUS_SUCCESS)
         {
-            Callback::Callback<DefaultSuccessCallback> * cb =
-                Callback::Callback<DefaultSuccessCallback>::FromCancelable(onSuccessCallback);
+            Callback::Callback<DefaultSuccessCallback> * cb = Callback::Callback<DefaultSuccessCallback>::FromCancelable(onSuccessCallback);
             cb->mCall(cb->mContext);
         }
         else
@@ -500,8 +487,7 @@ bool emberAfWriteAttributesResponseCallback(ClusterId clusterId, uint8_t * messa
             uint16_t attributeId = chip::Encoding::LittleEndian::Read16(message); // attribId
             ChipLogProgress(Zcl, "  attributeId: 0x%04x", attributeId);
 
-            Callback::Callback<DefaultFailureCallback> * cb =
-                Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
+            Callback::Callback<DefaultFailureCallback> * cb = Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
             cb->mCall(cb->mContext, status);
         }
 
@@ -534,8 +520,7 @@ bool emberAfConfigureReportingResponseCallback(ClusterId clusterId, uint8_t * me
 
         if (status == EMBER_ZCL_STATUS_SUCCESS)
         {
-            Callback::Callback<DefaultSuccessCallback> * cb =
-                Callback::Callback<DefaultSuccessCallback>::FromCancelable(onSuccessCallback);
+            Callback::Callback<DefaultSuccessCallback> * cb = Callback::Callback<DefaultSuccessCallback>::FromCancelable(onSuccessCallback);
             cb->mCall(cb->mContext);
         }
         else
@@ -548,12 +533,11 @@ bool emberAfConfigureReportingResponseCallback(ClusterId clusterId, uint8_t * me
             uint16_t attributeId = chip::Encoding::LittleEndian::Read16(message); // attribId
             ChipLogProgress(Zcl, "  attributeId: 0x%04x", attributeId);
 
-            Callback::Callback<DefaultFailureCallback> * cb =
-                Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
+            Callback::Callback<DefaultFailureCallback> * cb = Callback::Callback<DefaultFailureCallback>::FromCancelable(onFailureCallback);
             cb->mCall(cb->mContext, status);
         }
 
-        // The current code is written matching the current API where there is a single attribute report
+        // The current code is written matching the current API where there is a single attribute report 
         // per configure command. So if multiple attributes are configured at the same time, something is wrong
         // somewhere.
         if (messageLen)
@@ -600,8 +584,7 @@ bool emberAfReadReportingConfigurationResponseCallback(chip::ClusterId clusterId
 
             // FIXME: unk is not supported yet.
 
-            Callback::Callback<ReadReportingConfigurationReportedCallback> * cb =
-                Callback::Callback<ReadReportingConfigurationReportedCallback>::FromCancelable(onSuccessCallback);
+            Callback::Callback<ReadReportingConfigurationReportedCallback> * cb = Callback::Callback<ReadReportingConfigurationReportedCallback>::FromCancelable(onSuccessCallback);
             cb->mCall(cb->mContext, minimumReportingInterval, maximumReportingInterval);
         }
         else
@@ -610,8 +593,7 @@ bool emberAfReadReportingConfigurationResponseCallback(chip::ClusterId clusterId
             uint16_t timeout = chip::Encoding::LittleEndian::Read16(message); // uint16
             ChipLogProgress(Zcl, "  timeout: %" PRIu16, timeout);
 
-            Callback::Callback<ReadReportingConfigurationReceivedCallback> * cb =
-                Callback::Callback<ReadReportingConfigurationReceivedCallback>::FromCancelable(onSuccessCallback);
+            Callback::Callback<ReadReportingConfigurationReceivedCallback> * cb = Callback::Callback<ReadReportingConfigurationReceivedCallback>::FromCancelable(onSuccessCallback);
             cb->mCall(cb->mContext, timeout);
         }
     }
@@ -685,6 +667,7 @@ bool emberAfDiscoverCommandsReceivedResponseCallback(ClusterId clusterId, uint16
     cb->mCall(cb->mContext);
     return true;
 }
+
 
 bool emberAfReportAttributesCallback(ClusterId clusterId, uint8_t * message, uint16_t messageLen)
 {
@@ -795,122 +778,113 @@ bool emberAfReportAttributesCallback(ClusterId clusterId, uint8_t * message, uin
             uint8_t value = chip::Encoding::Read8(message);
             ChipLogProgress(Zcl, "  value: 0x%02x", value);
 
-            Callback::Callback<Int8uAttributeCallback> * cb =
-                Callback::Callback<Int8uAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int8uAttributeCallback> * cb = Callback::Callback<Int8uAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x09: // data16 / 16-bit data
-        case 0x19: // map16 / 16-bit bitmap
-        case 0x21: // uint16 / Unsigned 16-bit integer
-        case 0x31: // enum16 / 16-bit enumeration
-        case 0xE8: // clusterId / Cluster ID
-        case 0xE9: // attribId / Attribute ID
-        case 0xEA: // bacOID / BACnet OID
-        case 0xF1: // key128 / 128-bit security key
-        case 0xFF: // unk / Unknown
-        {
-            CHECK_MESSAGE_LENGTH(2);
-            uint16_t value = chip::Encoding::LittleEndian::Read16(message);
-            ChipLogProgress(Zcl, "  value: 0x%04x", value);
+            case 0x09: // data16 / 16-bit data
+            case 0x19: // map16 / 16-bit bitmap
+            case 0x21: // uint16 / Unsigned 16-bit integer
+            case 0x31: // enum16 / 16-bit enumeration
+            case 0xE8: // clusterId / Cluster ID
+            case 0xE9: // attribId / Attribute ID
+            case 0xEA: // bacOID / BACnet OID
+            case 0xF1: // key128 / 128-bit security key
+            case 0xFF: // unk / Unknown
+            {
+                CHECK_MESSAGE_LENGTH(2);
+                uint16_t value = chip::Encoding::LittleEndian::Read16(message);
+                ChipLogProgress(Zcl, "  value: 0x%04x", value);
 
-            Callback::Callback<Int16uAttributeCallback> * cb =
-                Callback::Callback<Int16uAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int16uAttributeCallback> * cb = Callback::Callback<Int16uAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x0B: // data32 / 32-bit data
-        case 0x1B: // map32 / 32-bit bitmap
-        case 0x23: // uint32 / Unsigned 32-bit integer
-        case 0xE1: // date / Date
-        case 0xE2: // UTC / UTCTime
-        {
-            CHECK_MESSAGE_LENGTH(4);
-            uint32_t value = chip::Encoding::LittleEndian::Read32(message);
-            ChipLogProgress(Zcl, "  value: 0x%08x", value);
+            case 0x0B: // data32 / 32-bit data
+            case 0x1B: // map32 / 32-bit bitmap
+            case 0x23: // uint32 / Unsigned 32-bit integer
+            case 0xE1: // date / Date
+            case 0xE2: // UTC / UTCTime
+            {
+                CHECK_MESSAGE_LENGTH(4);
+                uint32_t value = chip::Encoding::LittleEndian::Read32(message);
+                ChipLogProgress(Zcl, "  value: 0x%08x", value);
 
-            Callback::Callback<Int32uAttributeCallback> * cb =
-                Callback::Callback<Int32uAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int32uAttributeCallback> * cb = Callback::Callback<Int32uAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x0F: // data64 / 64-bit data
-        case 0x1F: // map64 / 64-bit bitmap
-        case 0x27: // uint64 / Unsigned 64-bit integer
-        case 0xF0: // EUI64 / IEEE address
-        {
-            CHECK_MESSAGE_LENGTH(8);
-            uint64_t value = chip::Encoding::LittleEndian::Read64(message);
-            ChipLogProgress(Zcl, "  value: 0x%16x", value);
+            case 0x0F: // data64 / 64-bit data
+            case 0x1F: // map64 / 64-bit bitmap
+            case 0x27: // uint64 / Unsigned 64-bit integer
+            case 0xF0: // EUI64 / IEEE address
+            {
+                CHECK_MESSAGE_LENGTH(8);
+                uint64_t value = chip::Encoding::LittleEndian::Read64(message);
+                ChipLogProgress(Zcl, "  value: 0x%16x", value);
 
-            Callback::Callback<Int64uAttributeCallback> * cb =
-                Callback::Callback<Int64uAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int64uAttributeCallback> * cb = Callback::Callback<Int64uAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x10: // bool / Boolean
-        {
-            CHECK_MESSAGE_LENGTH(1);
-            uint8_t value = chip::Encoding::Read8(message);
-            ChipLogProgress(Zcl, "  value: %d", value);
+            case 0x10: // bool / Boolean
+            {
+                CHECK_MESSAGE_LENGTH(1);
+                uint8_t value = chip::Encoding::Read8(message);
+                ChipLogProgress(Zcl, "  value: %d", value);
 
-            Callback::Callback<BooleanAttributeCallback> * cb =
-                Callback::Callback<BooleanAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<BooleanAttributeCallback> * cb = Callback::Callback<BooleanAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x28: // int8 / Signed 8-bit integer
-        {
-            CHECK_MESSAGE_LENGTH(1);
-            int8_t value = chip::CastToSigned(chip::Encoding::Read8(message));
-            ChipLogProgress(Zcl, "  value: %" PRId8, value);
+            case 0x28: // int8 / Signed 8-bit integer
+            {
+                CHECK_MESSAGE_LENGTH(1);
+                int8_t value = chip::CastToSigned(chip::Encoding::Read8(message));
+                ChipLogProgress(Zcl, "  value: %" PRId8, value);
 
-            Callback::Callback<Int8sAttributeCallback> * cb =
-                Callback::Callback<Int8sAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int8sAttributeCallback> * cb = Callback::Callback<Int8sAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x29: // int16 / Signed 16-bit integer
-        {
-            CHECK_MESSAGE_LENGTH(2);
-            int16_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read16(message));
-            ChipLogProgress(Zcl, "  value: %" PRId16, value);
+            case 0x29: // int16 / Signed 16-bit integer
+            {
+                CHECK_MESSAGE_LENGTH(2);
+                int16_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read16(message));
+                ChipLogProgress(Zcl, "  value: %" PRId16, value);
 
-            Callback::Callback<Int16sAttributeCallback> * cb =
-                Callback::Callback<Int16sAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int16sAttributeCallback> * cb = Callback::Callback<Int16sAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x2B: // int32 / Signed 32-bit integer
-        {
-            CHECK_MESSAGE_LENGTH(4);
-            int32_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read32(message));
-            ChipLogProgress(Zcl, "  value: %" PRId32, value);
+            case 0x2B: // int32 / Signed 32-bit integer
+            {
+                CHECK_MESSAGE_LENGTH(4);
+                int32_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read32(message));
+                ChipLogProgress(Zcl, "  value: %" PRId32, value);
 
-            Callback::Callback<Int32sAttributeCallback> * cb =
-                Callback::Callback<Int32sAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int32sAttributeCallback> * cb = Callback::Callback<Int32sAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
 
-        case 0x2F: // int64 / Signed 64-bit integer
-        {
-            CHECK_MESSAGE_LENGTH(8);
-            int64_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read64(message));
-            ChipLogProgress(Zcl, "  value: %" PRId64, value);
+            case 0x2F: // int64 / Signed 64-bit integer
+            {
+                CHECK_MESSAGE_LENGTH(8);
+                int64_t value = chip::CastToSigned(chip::Encoding::LittleEndian::Read64(message));
+                ChipLogProgress(Zcl, "  value: %" PRId64, value);
 
-            Callback::Callback<Int64sAttributeCallback> * cb =
-                Callback::Callback<Int64sAttributeCallback>::FromCancelable(onReportCallback);
-            cb->mCall(cb->mContext, value);
-            break;
-        }
+                Callback::Callback<Int64sAttributeCallback> * cb = Callback::Callback<Int64sAttributeCallback>::FromCancelable(onReportCallback);
+                cb->mCall(cb->mContext, value);
+                break;
+            }
         }
     }
 
