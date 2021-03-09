@@ -42,7 +42,8 @@ CHIP_ERROR chip_ime_AppendCommand_BarrierControl_BarrierControlGoToPercent(chip:
     chip::Controller::BarrierControlCluster clusterBarrierControl;
     (void) ZCLgroupId;
     clusterBarrierControl.Associate(device, ZCLendpointId);
-    return clusterBarrierControl.BarrierControlGoToPercent(nullptr, nullptr, percentOpen);
+    return clusterBarrierControl.BarrierControlGoToPercent(nullptr, nullptr, percentOpen
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_BarrierControl_BarrierControlStop(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId)
 {
@@ -72,7 +73,11 @@ CHIP_ERROR chip_ime_AppendCommand_Binding_Bind(chip::Controller::Device * device
     chip::Controller::BindingCluster clusterBinding;
     (void) ZCLgroupId;
     clusterBinding.Associate(device, ZCLendpointId);
-    return clusterBinding.Bind(nullptr, nullptr, nodeId, groupId, endpointId, clusterId);
+    return clusterBinding.Bind(nullptr, nullptr, nodeId
+    , groupId
+    , endpointId
+    , clusterId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Binding_Unbind(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, chip::NodeId nodeId, chip::GroupId groupId, chip::EndpointId endpointId, chip::ClusterId clusterId)
 {
@@ -80,7 +85,11 @@ CHIP_ERROR chip_ime_AppendCommand_Binding_Unbind(chip::Controller::Device * devi
     chip::Controller::BindingCluster clusterBinding;
     (void) ZCLgroupId;
     clusterBinding.Associate(device, ZCLendpointId);
-    return clusterBinding.Unbind(nullptr, nullptr, nodeId, groupId, endpointId, clusterId);
+    return clusterBinding.Unbind(nullptr, nullptr, nodeId
+    , groupId
+    , endpointId
+    , clusterId
+    );
 }
 // End of Cluster Binding
 
@@ -91,7 +100,11 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveColor(chip::Controller::Devic
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveColor(nullptr, nullptr, rateX, rateY, optionsMask, optionsOverride);
+    return clusterColorControl.MoveColor(nullptr, nullptr, rateX
+    , rateY
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveColorTemperature(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t moveMode, uint16_t rate, uint16_t colorTemperatureMinimum, uint16_t colorTemperatureMaximum, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -99,7 +112,13 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveColorTemperature(chip::Contro
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveColorTemperature(nullptr, nullptr, moveMode, rate, colorTemperatureMinimum, colorTemperatureMaximum, optionsMask, optionsOverride);
+    return clusterColorControl.MoveColorTemperature(nullptr, nullptr, moveMode
+    , rate
+    , colorTemperatureMinimum
+    , colorTemperatureMaximum
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveHue(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t moveMode, uint8_t rate, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -107,7 +126,11 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveHue(chip::Controller::Device 
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveHue(nullptr, nullptr, moveMode, rate, optionsMask, optionsOverride);
+    return clusterColorControl.MoveHue(nullptr, nullptr, moveMode
+    , rate
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveSaturation(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t moveMode, uint8_t rate, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -115,7 +138,11 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveSaturation(chip::Controller::
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveSaturation(nullptr, nullptr, moveMode, rate, optionsMask, optionsOverride);
+    return clusterColorControl.MoveSaturation(nullptr, nullptr, moveMode
+    , rate
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToColor(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t colorX, uint16_t colorY, uint16_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -123,7 +150,12 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToColor(chip::Controller::Dev
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveToColor(nullptr, nullptr, colorX, colorY, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.MoveToColor(nullptr, nullptr, colorX
+    , colorY
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToColorTemperature(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t colorTemperature, uint16_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -131,7 +163,11 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToColorTemperature(chip::Cont
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveToColorTemperature(nullptr, nullptr, colorTemperature, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.MoveToColorTemperature(nullptr, nullptr, colorTemperature
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToHue(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t hue, uint8_t direction, uint16_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -139,7 +175,12 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToHue(chip::Controller::Devic
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveToHue(nullptr, nullptr, hue, direction, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.MoveToHue(nullptr, nullptr, hue
+    , direction
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToHueAndSaturation(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t hue, uint8_t saturation, uint16_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -147,7 +188,12 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToHueAndSaturation(chip::Cont
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveToHueAndSaturation(nullptr, nullptr, hue, saturation, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.MoveToHueAndSaturation(nullptr, nullptr, hue
+    , saturation
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToSaturation(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t saturation, uint16_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -155,7 +201,11 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_MoveToSaturation(chip::Controller
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.MoveToSaturation(nullptr, nullptr, saturation, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.MoveToSaturation(nullptr, nullptr, saturation
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepColor(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, int16_t stepX, int16_t stepY, uint16_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -163,7 +213,12 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepColor(chip::Controller::Devic
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.StepColor(nullptr, nullptr, stepX, stepY, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.StepColor(nullptr, nullptr, stepX
+    , stepY
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepColorTemperature(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t stepMode, uint16_t stepSize, uint16_t transitionTime, uint16_t colorTemperatureMinimum, uint16_t colorTemperatureMaximum, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -171,7 +226,14 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepColorTemperature(chip::Contro
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.StepColorTemperature(nullptr, nullptr, stepMode, stepSize, transitionTime, colorTemperatureMinimum, colorTemperatureMaximum, optionsMask, optionsOverride);
+    return clusterColorControl.StepColorTemperature(nullptr, nullptr, stepMode
+    , stepSize
+    , transitionTime
+    , colorTemperatureMinimum
+    , colorTemperatureMaximum
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepHue(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t stepMode, uint8_t stepSize, uint8_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -179,7 +241,12 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepHue(chip::Controller::Device 
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.StepHue(nullptr, nullptr, stepMode, stepSize, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.StepHue(nullptr, nullptr, stepMode
+    , stepSize
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepSaturation(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t stepMode, uint8_t stepSize, uint8_t transitionTime, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -187,7 +254,12 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_StepSaturation(chip::Controller::
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.StepSaturation(nullptr, nullptr, stepMode, stepSize, transitionTime, optionsMask, optionsOverride);
+    return clusterColorControl.StepSaturation(nullptr, nullptr, stepMode
+    , stepSize
+    , transitionTime
+    , optionsMask
+    , optionsOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_ColorControl_StopMoveStep(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t optionsMask, uint8_t optionsOverride)
 {
@@ -195,7 +267,9 @@ CHIP_ERROR chip_ime_AppendCommand_ColorControl_StopMoveStep(chip::Controller::De
     chip::Controller::ColorControlCluster clusterColorControl;
     (void) ZCLgroupId;
     clusterColorControl.Associate(device, ZCLendpointId);
-    return clusterColorControl.StopMoveStep(nullptr, nullptr, optionsMask, optionsOverride);
+    return clusterColorControl.StopMoveStep(nullptr, nullptr, optionsMask
+    , optionsOverride
+    );
 }
 // End of Cluster ColorControl
 
@@ -241,7 +315,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearHolidaySchedule(chip::Controller
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.ClearHolidaySchedule(nullptr, nullptr, scheduleId);
+    return clusterDoorLock.ClearHolidaySchedule(nullptr, nullptr, scheduleId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearPin(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t userId)
 {
@@ -249,7 +324,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearPin(chip::Controller::Device * d
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.ClearPin(nullptr, nullptr, userId);
+    return clusterDoorLock.ClearPin(nullptr, nullptr, userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearRfid(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t userId)
 {
@@ -257,7 +333,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearRfid(chip::Controller::Device * 
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.ClearRfid(nullptr, nullptr, userId);
+    return clusterDoorLock.ClearRfid(nullptr, nullptr, userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearWeekdaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId, uint16_t userId)
 {
@@ -265,7 +342,9 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearWeekdaySchedule(chip::Controller
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.ClearWeekdaySchedule(nullptr, nullptr, scheduleId, userId);
+    return clusterDoorLock.ClearWeekdaySchedule(nullptr, nullptr, scheduleId
+    , userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearYeardaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId, uint16_t userId)
 {
@@ -273,7 +352,9 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_ClearYeardaySchedule(chip::Controller
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.ClearYeardaySchedule(nullptr, nullptr, scheduleId, userId);
+    return clusterDoorLock.ClearYeardaySchedule(nullptr, nullptr, scheduleId
+    , userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetHolidaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId)
 {
@@ -281,7 +362,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetHolidaySchedule(chip::Controller::
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetHolidaySchedule(nullptr, nullptr, scheduleId);
+    return clusterDoorLock.GetHolidaySchedule(nullptr, nullptr, scheduleId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetLogRecord(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t logIndex)
 {
@@ -289,7 +371,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetLogRecord(chip::Controller::Device
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetLogRecord(nullptr, nullptr, logIndex);
+    return clusterDoorLock.GetLogRecord(nullptr, nullptr, logIndex
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetPin(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t userId)
 {
@@ -297,7 +380,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetPin(chip::Controller::Device * dev
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetPin(nullptr, nullptr, userId);
+    return clusterDoorLock.GetPin(nullptr, nullptr, userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetRfid(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t userId)
 {
@@ -305,7 +389,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetRfid(chip::Controller::Device * de
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetRfid(nullptr, nullptr, userId);
+    return clusterDoorLock.GetRfid(nullptr, nullptr, userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetUserType(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t userId)
 {
@@ -313,7 +398,8 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetUserType(chip::Controller::Device 
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetUserType(nullptr, nullptr, userId);
+    return clusterDoorLock.GetUserType(nullptr, nullptr, userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetWeekdaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId, uint16_t userId)
 {
@@ -321,7 +407,9 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetWeekdaySchedule(chip::Controller::
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetWeekdaySchedule(nullptr, nullptr, scheduleId, userId);
+    return clusterDoorLock.GetWeekdaySchedule(nullptr, nullptr, scheduleId
+    , userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetYeardaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId, uint16_t userId)
 {
@@ -329,7 +417,9 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_GetYeardaySchedule(chip::Controller::
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.GetYeardaySchedule(nullptr, nullptr, scheduleId, userId);
+    return clusterDoorLock.GetYeardaySchedule(nullptr, nullptr, scheduleId
+    , userId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_LockDoor(chip::Controller::Device * device, chip::EndpointId ZCLendpointId,
                                                     chip::GroupId ZCLgroupId, const uint8_t * pin, uint32_t pin_Len)
@@ -346,7 +436,11 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetHolidaySchedule(chip::Controller::
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.SetHolidaySchedule(nullptr, nullptr, scheduleId, localStartTime, localEndTime, operatingModeDuringHoliday);
+    return clusterDoorLock.SetHolidaySchedule(nullptr, nullptr, scheduleId
+    , localStartTime
+    , localEndTime
+    , operatingModeDuringHoliday
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetPin(chip::Controller::Device * device, chip::EndpointId ZCLendpointId,
                                                   chip::GroupId ZCLgroupId, uint16_t userId, uint8_t userStatus, uint8_t userType,
@@ -374,7 +468,9 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetUserType(chip::Controller::Device 
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.SetUserType(nullptr, nullptr, userId, userType);
+    return clusterDoorLock.SetUserType(nullptr, nullptr, userId
+    , userType
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetWeekdaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId, uint16_t userId, uint8_t daysMask, uint8_t startHour, uint8_t startMinute, uint8_t endHour, uint8_t endMinute)
 {
@@ -382,7 +478,14 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetWeekdaySchedule(chip::Controller::
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.SetWeekdaySchedule(nullptr, nullptr, scheduleId, userId, daysMask, startHour, startMinute, endHour, endMinute);
+    return clusterDoorLock.SetWeekdaySchedule(nullptr, nullptr, scheduleId
+    , userId
+    , daysMask
+    , startHour
+    , startMinute
+    , endHour
+    , endMinute
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetYeardaySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t scheduleId, uint16_t userId, uint32_t localStartTime, uint32_t localEndTime)
 {
@@ -390,7 +493,11 @@ CHIP_ERROR chip_ime_AppendCommand_DoorLock_SetYeardaySchedule(chip::Controller::
     chip::Controller::DoorLockCluster clusterDoorLock;
     (void) ZCLgroupId;
     clusterDoorLock.Associate(device, ZCLendpointId);
-    return clusterDoorLock.SetYeardaySchedule(nullptr, nullptr, scheduleId, userId, localStartTime, localEndTime);
+    return clusterDoorLock.SetYeardaySchedule(nullptr, nullptr, scheduleId
+    , userId
+    , localStartTime
+    , localEndTime
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_DoorLock_UnlockDoor(chip::Controller::Device * device, chip::EndpointId ZCLendpointId,
                                                       chip::GroupId ZCLgroupId, const uint8_t * pin, uint32_t pin_Len)
@@ -420,7 +527,10 @@ CHIP_ERROR chip_ime_AppendCommand_GeneralCommissioning_ArmFailSafe(chip::Control
     chip::Controller::GeneralCommissioningCluster clusterGeneralCommissioning;
     (void) ZCLgroupId;
     clusterGeneralCommissioning.Associate(device, ZCLendpointId);
-    return clusterGeneralCommissioning.ArmFailSafe(nullptr, nullptr, expiryLengthSeconds, breadcrumb, timeoutMs);
+    return clusterGeneralCommissioning.ArmFailSafe(nullptr, nullptr, expiryLengthSeconds
+    , breadcrumb
+    , timeoutMs
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_GeneralCommissioning_CommissioningComplete(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId)
 {
@@ -430,17 +540,17 @@ CHIP_ERROR chip_ime_AppendCommand_GeneralCommissioning_CommissioningComplete(chi
     clusterGeneralCommissioning.Associate(device, ZCLendpointId);
     return clusterGeneralCommissioning.CommissioningComplete(nullptr, nullptr);
 }
-CHIP_ERROR chip_ime_AppendCommand_GeneralCommissioning_SetFabric(chip::Controller::Device * device, chip::EndpointId ZCLendpointId,
-                                                                 chip::GroupId ZCLgroupId, const uint8_t * fabricId,
-                                                                 uint32_t fabricId_Len, const uint8_t * fabricSecret,
-                                                                 uint32_t fabricSecret_Len, uint64_t breadcrumb, uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_GeneralCommissioning_SetFabric(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * fabricId, uint32_t fabricId_Len, const uint8_t * fabricSecret, uint32_t fabricSecret_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::GeneralCommissioningCluster clusterGeneralCommissioning;
     (void) ZCLgroupId;
     clusterGeneralCommissioning.Associate(device, ZCLendpointId);
-    return clusterGeneralCommissioning.SetFabric(nullptr, nullptr, chip::ByteSpan(fabricId, fabricId_Len),
-                                                 chip::ByteSpan(fabricSecret, fabricSecret_Len), breadcrumb, timeoutMs);
+    return clusterGeneralCommissioning.SetFabric(nullptr, nullptr, chip::ByteSpan(fabricId, fabricId_Len)
+    , chip::ByteSpan(fabricSecret, fabricSecret_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
 // End of Cluster GeneralCommissioning
 
@@ -471,7 +581,9 @@ CHIP_ERROR chip_ime_AppendCommand_Groups_GetGroupMembership(chip::Controller::De
     chip::Controller::GroupsCluster clusterGroups;
     (void) ZCLgroupId;
     clusterGroups.Associate(device, ZCLendpointId);
-    return clusterGroups.GetGroupMembership(nullptr, nullptr, groupCount, groupList);
+    return clusterGroups.GetGroupMembership(nullptr, nullptr, groupCount
+    , groupList
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Groups_RemoveAllGroups(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId)
 {
@@ -487,7 +599,8 @@ CHIP_ERROR chip_ime_AppendCommand_Groups_RemoveGroup(chip::Controller::Device * 
     chip::Controller::GroupsCluster clusterGroups;
     (void) ZCLgroupId;
     clusterGroups.Associate(device, ZCLendpointId);
-    return clusterGroups.RemoveGroup(nullptr, nullptr, groupId);
+    return clusterGroups.RemoveGroup(nullptr, nullptr, groupId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Groups_ViewGroup(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t groupId)
 {
@@ -495,7 +608,8 @@ CHIP_ERROR chip_ime_AppendCommand_Groups_ViewGroup(chip::Controller::Device * de
     chip::Controller::GroupsCluster clusterGroups;
     (void) ZCLgroupId;
     clusterGroups.Associate(device, ZCLendpointId);
-    return clusterGroups.ViewGroup(nullptr, nullptr, groupId);
+    return clusterGroups.ViewGroup(nullptr, nullptr, groupId
+    );
 }
 // End of Cluster Groups
 
@@ -509,7 +623,8 @@ CHIP_ERROR chip_ime_AppendCommand_Identify_Identify(chip::Controller::Device * d
     chip::Controller::IdentifyCluster clusterIdentify;
     (void) ZCLgroupId;
     clusterIdentify.Associate(device, ZCLendpointId);
-    return clusterIdentify.Identify(nullptr, nullptr, identifyTime);
+    return clusterIdentify.Identify(nullptr, nullptr, identifyTime
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Identify_IdentifyQuery(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId)
 {
@@ -528,7 +643,11 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_Move(chip::Controller::Device * d
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.Move(nullptr, nullptr, moveMode, rate, optionMask, optionOverride);
+    return clusterLevelControl.Move(nullptr, nullptr, moveMode
+    , rate
+    , optionMask
+    , optionOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_MoveToLevel(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t level, uint16_t transitionTime, uint8_t optionMask, uint8_t optionOverride)
 {
@@ -536,7 +655,11 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_MoveToLevel(chip::Controller::Dev
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.MoveToLevel(nullptr, nullptr, level, transitionTime, optionMask, optionOverride);
+    return clusterLevelControl.MoveToLevel(nullptr, nullptr, level
+    , transitionTime
+    , optionMask
+    , optionOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_MoveToLevelWithOnOff(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t level, uint16_t transitionTime)
 {
@@ -544,7 +667,9 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_MoveToLevelWithOnOff(chip::Contro
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.MoveToLevelWithOnOff(nullptr, nullptr, level, transitionTime);
+    return clusterLevelControl.MoveToLevelWithOnOff(nullptr, nullptr, level
+    , transitionTime
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_MoveWithOnOff(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t moveMode, uint8_t rate)
 {
@@ -552,7 +677,9 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_MoveWithOnOff(chip::Controller::D
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.MoveWithOnOff(nullptr, nullptr, moveMode, rate);
+    return clusterLevelControl.MoveWithOnOff(nullptr, nullptr, moveMode
+    , rate
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_Step(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t stepMode, uint8_t stepSize, uint16_t transitionTime, uint8_t optionMask, uint8_t optionOverride)
 {
@@ -560,7 +687,12 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_Step(chip::Controller::Device * d
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.Step(nullptr, nullptr, stepMode, stepSize, transitionTime, optionMask, optionOverride);
+    return clusterLevelControl.Step(nullptr, nullptr, stepMode
+    , stepSize
+    , transitionTime
+    , optionMask
+    , optionOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_StepWithOnOff(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t stepMode, uint8_t stepSize, uint16_t transitionTime)
 {
@@ -568,7 +700,10 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_StepWithOnOff(chip::Controller::D
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.StepWithOnOff(nullptr, nullptr, stepMode, stepSize, transitionTime);
+    return clusterLevelControl.StepWithOnOff(nullptr, nullptr, stepMode
+    , stepSize
+    , transitionTime
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_Stop(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t optionMask, uint8_t optionOverride)
 {
@@ -576,7 +711,9 @@ CHIP_ERROR chip_ime_AppendCommand_LevelControl_Stop(chip::Controller::Device * d
     chip::Controller::LevelControlCluster clusterLevelControl;
     (void) ZCLgroupId;
     clusterLevelControl.Associate(device, ZCLendpointId);
-    return clusterLevelControl.Stop(nullptr, nullptr, optionMask, optionOverride);
+    return clusterLevelControl.Stop(nullptr, nullptr, optionMask
+    , optionOverride
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_LevelControl_StopWithOnOff(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId)
 {
@@ -684,55 +821,50 @@ CHIP_ERROR chip_ime_AppendCommand_MediaPlayback_StopRequest(chip::Controller::De
 // End of Cluster MediaPlayback
 
 // Cluster NetworkCommissioning
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_AddThreadNetwork(chip::Controller::Device * device,
-                                                                        chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                        const uint8_t * operationalDataset,
-                                                                        uint32_t operationalDataset_Len, uint64_t breadcrumb,
-                                                                        uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_AddThreadNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * operationalDataset, uint32_t operationalDataset_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.AddThreadNetwork(
-        nullptr, nullptr, chip::ByteSpan(operationalDataset, operationalDataset_Len), breadcrumb, timeoutMs);
+    return clusterNetworkCommissioning.AddThreadNetwork(nullptr, nullptr, chip::ByteSpan(operationalDataset, operationalDataset_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_AddWiFiNetwork(chip::Controller::Device * device,
-                                                                      chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                      const uint8_t * ssid, uint32_t ssid_Len,
-                                                                      const uint8_t * credentials, uint32_t credentials_Len,
-                                                                      uint64_t breadcrumb, uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_AddWiFiNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * ssid, uint32_t ssid_Len, const uint8_t * credentials, uint32_t credentials_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.AddWiFiNetwork(nullptr, nullptr, chip::ByteSpan(ssid, ssid_Len),
-                                                      chip::ByteSpan(credentials, credentials_Len), breadcrumb, timeoutMs);
+    return clusterNetworkCommissioning.AddWiFiNetwork(nullptr, nullptr, chip::ByteSpan(ssid, ssid_Len)
+    , chip::ByteSpan(credentials, credentials_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_DisableNetwork(chip::Controller::Device * device,
-                                                                      chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                      const uint8_t * networkID, uint32_t networkID_Len,
-                                                                      uint64_t breadcrumb, uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_DisableNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * networkID, uint32_t networkID_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.DisableNetwork(nullptr, nullptr, chip::ByteSpan(networkID, networkID_Len), breadcrumb,
-                                                      timeoutMs);
+    return clusterNetworkCommissioning.DisableNetwork(nullptr, nullptr, chip::ByteSpan(networkID, networkID_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_EnableNetwork(chip::Controller::Device * device,
-                                                                     chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                     const uint8_t * networkID, uint32_t networkID_Len,
-                                                                     uint64_t breadcrumb, uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_EnableNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * networkID, uint32_t networkID_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.EnableNetwork(nullptr, nullptr, chip::ByteSpan(networkID, networkID_Len), breadcrumb,
-                                                     timeoutMs);
+    return clusterNetworkCommissioning.EnableNetwork(nullptr, nullptr, chip::ByteSpan(networkID, networkID_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_GetLastNetworkCommissioningResult(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint32_t timeoutMs)
 {
@@ -740,56 +872,53 @@ CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_GetLastNetworkCommissioni
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.GetLastNetworkCommissioningResult(nullptr, nullptr, timeoutMs);
+    return clusterNetworkCommissioning.GetLastNetworkCommissioningResult(nullptr, nullptr, timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_RemoveNetwork(chip::Controller::Device * device,
-                                                                     chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                     const uint8_t * networkID, uint32_t networkID_Len,
-                                                                     uint64_t breadcrumb, uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_RemoveNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * networkID, uint32_t networkID_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.RemoveNetwork(nullptr, nullptr, chip::ByteSpan(networkID, networkID_Len), breadcrumb,
-                                                     timeoutMs);
+    return clusterNetworkCommissioning.RemoveNetwork(nullptr, nullptr, chip::ByteSpan(networkID, networkID_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_ScanNetworks(chip::Controller::Device * device,
-                                                                    chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                    const uint8_t * ssid, uint32_t ssid_Len, uint64_t breadcrumb,
-                                                                    uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_ScanNetworks(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * ssid, uint32_t ssid_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.ScanNetworks(nullptr, nullptr, chip::ByteSpan(ssid, ssid_Len), breadcrumb, timeoutMs);
+    return clusterNetworkCommissioning.ScanNetworks(nullptr, nullptr, chip::ByteSpan(ssid, ssid_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_UpdateThreadNetwork(chip::Controller::Device * device,
-                                                                           chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                           const uint8_t * operationalDataset,
-                                                                           uint32_t operationalDataset_Len, uint64_t breadcrumb,
-                                                                           uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_UpdateThreadNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * operationalDataset, uint32_t operationalDataset_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.UpdateThreadNetwork(
-        nullptr, nullptr, chip::ByteSpan(operationalDataset, operationalDataset_Len), breadcrumb, timeoutMs);
+    return clusterNetworkCommissioning.UpdateThreadNetwork(nullptr, nullptr, chip::ByteSpan(operationalDataset, operationalDataset_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
-CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_UpdateWiFiNetwork(chip::Controller::Device * device,
-                                                                         chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId,
-                                                                         const uint8_t * ssid, uint32_t ssid_Len,
-                                                                         const uint8_t * credentials, uint32_t credentials_Len,
-                                                                         uint64_t breadcrumb, uint32_t timeoutMs)
+CHIP_ERROR chip_ime_AppendCommand_NetworkCommissioning_UpdateWiFiNetwork(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, const uint8_t * ssid, uint32_t ssid_Len, const uint8_t * credentials, uint32_t credentials_Len, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     VerifyOrReturnError(device != nullptr, CHIP_ERROR_INVALID_ARGUMENT);
     chip::Controller::NetworkCommissioningCluster clusterNetworkCommissioning;
     (void) ZCLgroupId;
     clusterNetworkCommissioning.Associate(device, ZCLendpointId);
-    return clusterNetworkCommissioning.UpdateWiFiNetwork(nullptr, nullptr, chip::ByteSpan(ssid, ssid_Len),
-                                                         chip::ByteSpan(credentials, credentials_Len), breadcrumb, timeoutMs);
+    return clusterNetworkCommissioning.UpdateWiFiNetwork(nullptr, nullptr, chip::ByteSpan(ssid, ssid_Len)
+    , chip::ByteSpan(credentials, credentials_Len)
+    , breadcrumb
+    , timeoutMs
+    );
 }
 // End of Cluster NetworkCommissioning
 
@@ -839,7 +968,8 @@ CHIP_ERROR chip_ime_AppendCommand_Scenes_GetSceneMembership(chip::Controller::De
     chip::Controller::ScenesCluster clusterScenes;
     (void) ZCLgroupId;
     clusterScenes.Associate(device, ZCLendpointId);
-    return clusterScenes.GetSceneMembership(nullptr, nullptr, groupId);
+    return clusterScenes.GetSceneMembership(nullptr, nullptr, groupId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Scenes_RecallScene(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t groupId, uint8_t sceneId, uint16_t transitionTime)
 {
@@ -847,7 +977,10 @@ CHIP_ERROR chip_ime_AppendCommand_Scenes_RecallScene(chip::Controller::Device * 
     chip::Controller::ScenesCluster clusterScenes;
     (void) ZCLgroupId;
     clusterScenes.Associate(device, ZCLendpointId);
-    return clusterScenes.RecallScene(nullptr, nullptr, groupId, sceneId, transitionTime);
+    return clusterScenes.RecallScene(nullptr, nullptr, groupId
+    , sceneId
+    , transitionTime
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Scenes_RemoveAllScenes(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t groupId)
 {
@@ -855,7 +988,8 @@ CHIP_ERROR chip_ime_AppendCommand_Scenes_RemoveAllScenes(chip::Controller::Devic
     chip::Controller::ScenesCluster clusterScenes;
     (void) ZCLgroupId;
     clusterScenes.Associate(device, ZCLendpointId);
-    return clusterScenes.RemoveAllScenes(nullptr, nullptr, groupId);
+    return clusterScenes.RemoveAllScenes(nullptr, nullptr, groupId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Scenes_RemoveScene(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t groupId, uint8_t sceneId)
 {
@@ -863,7 +997,9 @@ CHIP_ERROR chip_ime_AppendCommand_Scenes_RemoveScene(chip::Controller::Device * 
     chip::Controller::ScenesCluster clusterScenes;
     (void) ZCLgroupId;
     clusterScenes.Associate(device, ZCLendpointId);
-    return clusterScenes.RemoveScene(nullptr, nullptr, groupId, sceneId);
+    return clusterScenes.RemoveScene(nullptr, nullptr, groupId
+    , sceneId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Scenes_StoreScene(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t groupId, uint8_t sceneId)
 {
@@ -871,7 +1007,9 @@ CHIP_ERROR chip_ime_AppendCommand_Scenes_StoreScene(chip::Controller::Device * d
     chip::Controller::ScenesCluster clusterScenes;
     (void) ZCLgroupId;
     clusterScenes.Associate(device, ZCLendpointId);
-    return clusterScenes.StoreScene(nullptr, nullptr, groupId, sceneId);
+    return clusterScenes.StoreScene(nullptr, nullptr, groupId
+    , sceneId
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Scenes_ViewScene(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint16_t groupId, uint8_t sceneId)
 {
@@ -879,7 +1017,9 @@ CHIP_ERROR chip_ime_AppendCommand_Scenes_ViewScene(chip::Controller::Device * de
     chip::Controller::ScenesCluster clusterScenes;
     (void) ZCLgroupId;
     clusterScenes.Associate(device, ZCLendpointId);
-    return clusterScenes.ViewScene(nullptr, nullptr, groupId, sceneId);
+    return clusterScenes.ViewScene(nullptr, nullptr, groupId
+    , sceneId
+    );
 }
 // End of Cluster Scenes
 
@@ -909,7 +1049,9 @@ CHIP_ERROR chip_ime_AppendCommand_Thermostat_GetWeeklySchedule(chip::Controller:
     chip::Controller::ThermostatCluster clusterThermostat;
     (void) ZCLgroupId;
     clusterThermostat.Associate(device, ZCLendpointId);
-    return clusterThermostat.GetWeeklySchedule(nullptr, nullptr, daysToReturn, modeToReturn);
+    return clusterThermostat.GetWeeklySchedule(nullptr, nullptr, daysToReturn
+    , modeToReturn
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Thermostat_SetWeeklySchedule(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t numberOfTransitionsForSequence, uint8_t dayOfWeekForSequence, uint8_t modeForSequence, uint8_t payload)
 {
@@ -917,7 +1059,11 @@ CHIP_ERROR chip_ime_AppendCommand_Thermostat_SetWeeklySchedule(chip::Controller:
     chip::Controller::ThermostatCluster clusterThermostat;
     (void) ZCLgroupId;
     clusterThermostat.Associate(device, ZCLendpointId);
-    return clusterThermostat.SetWeeklySchedule(nullptr, nullptr, numberOfTransitionsForSequence, dayOfWeekForSequence, modeForSequence, payload);
+    return clusterThermostat.SetWeeklySchedule(nullptr, nullptr, numberOfTransitionsForSequence
+    , dayOfWeekForSequence
+    , modeForSequence
+    , payload
+    );
 }
 CHIP_ERROR chip_ime_AppendCommand_Thermostat_SetpointRaiseLower(chip::Controller::Device * device, chip::EndpointId ZCLendpointId, chip::GroupId ZCLgroupId, uint8_t mode, int8_t amount)
 {
@@ -925,7 +1071,9 @@ CHIP_ERROR chip_ime_AppendCommand_Thermostat_SetpointRaiseLower(chip::Controller
     chip::Controller::ThermostatCluster clusterThermostat;
     (void) ZCLgroupId;
     clusterThermostat.Associate(device, ZCLendpointId);
-    return clusterThermostat.SetpointRaiseLower(nullptr, nullptr, mode, amount);
+    return clusterThermostat.SetpointRaiseLower(nullptr, nullptr, mode
+    , amount
+    );
 }
 // End of Cluster Thermostat
 

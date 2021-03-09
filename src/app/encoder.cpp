@@ -2631,9 +2631,7 @@ PacketBufferHandle encodeGeneralCommissioningClusterCommissioningCompleteCommand
 /*
  * Command SetFabric
  */
-PacketBufferHandle encodeGeneralCommissioningClusterSetFabricCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                     chip::ByteSpan fabricId, chip::ByteSpan fabricSecret,
-                                                                     uint64_t breadcrumb, uint32_t timeoutMs)
+PacketBufferHandle encodeGeneralCommissioningClusterSetFabricCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan fabricId, chip::ByteSpan fabricSecret, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("SetFabric", GENERAL_COMMISSIONING_CLUSTER_ID);
     size_t fabricIdStrLen = fabricId.size();
@@ -3521,9 +3519,7 @@ PacketBufferHandle encodeMediaPlaybackClusterReadClusterRevisionAttribute(uint8_
 /*
  * Command AddThreadNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterAddThreadNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                            chip::ByteSpan operationalDataset, uint64_t breadcrumb,
-                                                                            uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterAddThreadNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan operationalDataset, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("AddThreadNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t operationalDatasetStrLen = operationalDataset.size();
@@ -3546,9 +3542,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterAddThreadNetworkCommand(uint
 /*
  * Command AddWiFiNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterAddWiFiNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                          chip::ByteSpan ssid, chip::ByteSpan credentials,
-                                                                          uint64_t breadcrumb, uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterAddWiFiNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan ssid, chip::ByteSpan credentials, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("AddWiFiNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t ssidStrLen = ssid.size();
@@ -3580,9 +3574,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterAddWiFiNetworkCommand(uint8_
 /*
  * Command DisableNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterDisableNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                          chip::ByteSpan networkID, uint64_t breadcrumb,
-                                                                          uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterDisableNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan networkID, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("DisableNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t networkIDStrLen = networkID.size();
@@ -3605,9 +3597,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterDisableNetworkCommand(uint8_
 /*
  * Command EnableNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterEnableNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                         chip::ByteSpan networkID, uint64_t breadcrumb,
-                                                                         uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterEnableNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan networkID, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("EnableNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t networkIDStrLen = networkID.size();
@@ -3644,9 +3634,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterGetLastNetworkCommissioningR
 /*
  * Command RemoveNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterRemoveNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                         chip::ByteSpan networkID, uint64_t breadcrumb,
-                                                                         uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterRemoveNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan networkID, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("RemoveNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t networkIDStrLen = networkID.size();
@@ -3669,9 +3657,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterRemoveNetworkCommand(uint8_t
 /*
  * Command ScanNetworks
  */
-PacketBufferHandle encodeNetworkCommissioningClusterScanNetworksCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                        chip::ByteSpan ssid, uint64_t breadcrumb,
-                                                                        uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterScanNetworksCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan ssid, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("ScanNetworks", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t ssidStrLen = ssid.size();
@@ -3694,9 +3680,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterScanNetworksCommand(uint8_t 
 /*
  * Command UpdateThreadNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterUpdateThreadNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                               chip::ByteSpan operationalDataset,
-                                                                               uint64_t breadcrumb, uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterUpdateThreadNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan operationalDataset, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("UpdateThreadNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t operationalDatasetStrLen = operationalDataset.size();
@@ -3719,9 +3703,7 @@ PacketBufferHandle encodeNetworkCommissioningClusterUpdateThreadNetworkCommand(u
 /*
  * Command UpdateWiFiNetwork
  */
-PacketBufferHandle encodeNetworkCommissioningClusterUpdateWiFiNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint,
-                                                                             chip::ByteSpan ssid, chip::ByteSpan credentials,
-                                                                             uint64_t breadcrumb, uint32_t timeoutMs)
+PacketBufferHandle encodeNetworkCommissioningClusterUpdateWiFiNetworkCommand(uint8_t seqNum, EndpointId destinationEndpoint, chip::ByteSpan ssid, chip::ByteSpan credentials, uint64_t breadcrumb, uint32_t timeoutMs)
 {
     COMMAND_HEADER("UpdateWiFiNetwork", NETWORK_COMMISSIONING_CLUSTER_ID);
     size_t ssidStrLen = ssid.size();

@@ -23,12 +23,24 @@
 #include "gen/attribute-id.h"
 #include "gen/attribute-type.h"
 #include "gen/cluster-id.h"
+#include "gen/enums.h"
 
 using namespace chip;
 
 void emberAfThermostatClusterServerInitCallback(void)
 {
     // TODO
+    // Get from the "real thermostat"
+    // current mode
+    // current occupied heating setpoint
+    // current unoccupied heating setpoint
+    // current occupied cooling setpoint
+    // current unoccupied cooling setpoint
+    // and update the zcl cluster values
+    // This should be a callback defined function
+    // with weak binding so that real thermostat
+    // can get the values.
+    // or should this just be the responsibility of the thermostat application?
 }
 
 bool emberAfThermostatClusterClearWeeklyScheduleCallback()
@@ -57,6 +69,115 @@ bool emberAfThermostatClusterSetWeeklyScheduleCallback(uint8_t numberOfTransitio
 
 bool emberAfThermostatClusterSetpointRaiseLowerCallback(uint8_t mode, int8_t amount)
 {
-    // TODO
-    return false;
+    bool result = false;
+    EndpointId endpoint = 1;     // Hard code to 1 for now/
+    uint8_t OperatingMode = EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_OFF;   // Default operating mode to off
+    int32_t HeatingSetpoint = 2000, CoolingSetpoint = 2600;       // Set to defaults to be safe
+    EmberAfStatus status =
+        emberAfReadAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_SYSTEM_MODE_ATTRIBUTE_ID,
+                            CLUSTER_MASK_SERVER, (uint8_t *) &OperatingMode , sizeof(mode), NULL);
+    if (status == EMBER_ZCL_STATUS_SUCCESS)
+    {
+        switch (OperatingMode)
+        {
+            case EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_AUTO:
+            {
+                // In auto mode we will need to change both the heating and cooling setpoints
+                status =
+                    emberAfReadAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_COOLING_SETPOINT_ATTRIBUTE_ID,
+                            CLUSTER_MASK_SERVER, (uint8_t *) &CoolingSetpoint , sizeof(CoolingSetpoint), NULL);
+                if (status == EMBER_ZCL_STATUS_SUCCESS)
+                {
+                    status =
+                        emberAfReadAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_HEATING_SETPOINT_ATTRIBUTE_ID,
+                            CLUSTER_MASK_SERVER, (uint8_t *) &HeatingSetpoint , sizeof(HeatingSetpoint), NULL);
+                    if (status == EMBER_ZCL_STATUS_SUCCESS)
+                    {
+                        HeatingSetpoint += (amount * 10);
+                        CoolingSetpoint += (amount * 10);
+                        // TODO should check against maximum/minimum and absolute max and min values
+                        status = emberAfWriteAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_HEATING_SETPOINT_ATTRIBUTE_ID,
+                                               CLUSTER_MASK_SERVER, (uint8_t *) &HeatingSetpoint, ZCL_INT16U_ATTRIBUTE_TYPE);
+                        if (status == EMBER_ZCL_STATUS_SUCCESS) 
+                        {
+                            status = emberAfWriteAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_COOLING_SETPOINT_ATTRIBUTE_ID,
+                                CLUSTER_MASK_SERVER, (uint8_t *) &CoolingSetpoint, ZCL_INT16U_ATTRIBUTE_TYPE);
+                            if (status == EMBER_ZCL_STATUS_SUCCESS)
+                            {
+                                result = true;
+                            }
+                            else
+                            {
+                                // Todo roll back the setpoints
+                            }
+                        }
+                        else
+                        {
+                            // Todo roll back the setpoints
+                        }
+                    }
+                }
+                break;
+            }
+        
+            case EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_COOL:
+            {
+               // In cooling mode we will need to change only the cooling setpoint
+                status =
+                    emberAfReadAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_COOLING_SETPOINT_ATTRIBUTE_ID,
+                            CLUSTER_MASK_SERVER, (uint8_t *) &CoolingSetpoint , sizeof(CoolingSetpoint), NULL);
+                if (status == EMBER_ZCL_STATUS_SUCCESS)
+                {
+                    CoolingSetpoint += (amount * 10);
+                    // TODO should check against maximum/minimum and absolute max and min values
+                    status = emberAfWriteAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_COOLING_SETPOINT_ATTRIBUTE_ID,
+                        CLUSTER_MASK_SERVER, (uint8_t *) &CoolingSetpoint, ZCL_INT16U_ATTRIBUTE_TYPE);
+                    if (status == EMBER_ZCL_STATUS_SUCCESS)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        // Todo roll back the setpoints
+                    }
+                }
+                break;
+            }
+        
+            case EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_HEAT:
+            case EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_EMERGENCY_HEATING:
+            {
+               // In cooling mode we will need to change only the cooling setpoint
+                status =
+                    emberAfReadAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_HEATING_SETPOINT_ATTRIBUTE_ID,
+                            CLUSTER_MASK_SERVER, (uint8_t *) &HeatingSetpoint , sizeof(CoolingSetpoint), NULL);
+                if (status == EMBER_ZCL_STATUS_SUCCESS)
+                {
+                    HeatingSetpoint += (amount * 10);
+                    // TODO should check against maximum/minimum and absolute max and min values
+                    status = emberAfWriteAttribute(endpoint, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_OCCUPIED_HEATING_SETPOINT_ATTRIBUTE_ID,
+                        CLUSTER_MASK_SERVER, (uint8_t *) &HeatingSetpoint, ZCL_INT16U_ATTRIBUTE_TYPE);
+                    if (status == EMBER_ZCL_STATUS_SUCCESS)
+                    {
+                        result = true;
+                    }
+                    else
+                    {
+                        // Todo roll back the setpoints
+                    }
+                }
+                break;
+            }
+
+            default:
+                //EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_OFF: 
+                //EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_PRECOOLING:
+                //EMBER_ZCL_THERMOSTAT_SYSTEM_MODE_FAN_ONLY:
+                // Can't change the temperature in any of these modes;
+                // Nothing to do here
+                break;
+        }
+        emberAfSendImmediateDefaultResponse(status);
+    }
+    return result;
 }

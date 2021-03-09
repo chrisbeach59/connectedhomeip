@@ -3993,11 +3993,7 @@ private:
         completionHandler([CHIPError errorForCHIPErrorCode:err], nil);
     }
 }
-- (void)setFabric:(NSData *)fabricId
-         fabricSecret:(NSData *)fabricSecret
-           breadcrumb:(uint64_t)breadcrumb
-            timeoutMs:(uint32_t)timeoutMs
-    completionHandler:(ResponseHandler)completionHandler
+- (void)setFabric:(NSData *)fabricId fabricSecret:(NSData *)fabricSecret breadcrumb:(uint64_t)breadcrumb timeoutMs:(uint32_t)timeoutMs completionHandler:(ResponseHandler)completionHandler
 {
     CHIPGeneralCommissioningClusterSetFabricResponseCallbackBridge * onSuccess = new CHIPGeneralCommissioningClusterSetFabricResponseCallbackBridge(completionHandler, [self callbackQueue]);
     if (!onSuccess) {
@@ -4012,9 +4008,7 @@ private:
         return;
     }
 
-    CHIP_ERROR err = self.cppCluster.SetFabric(onSuccess->Cancel(), onFailure->Cancel(),
-        chip::ByteSpan((const uint8_t *) fabricId.bytes, fabricId.length),
-        chip::ByteSpan((const uint8_t *) fabricSecret.bytes, fabricSecret.length), breadcrumb, timeoutMs);
+    CHIP_ERROR err = self.cppCluster.SetFabric(onSuccess->Cancel(), onFailure->Cancel(), chip::ByteSpan((const uint8_t*)fabricId.bytes, fabricId.length), chip::ByteSpan((const uint8_t*)fabricSecret.bytes, fabricSecret.length), breadcrumb, timeoutMs);
     if (err != CHIP_NO_ERROR) {
         delete onSuccess;
         delete onFailure;

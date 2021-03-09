@@ -5014,31 +5014,29 @@ public:
 
         chip::Controller::GeneralCommissioningCluster cluster;
         cluster.Associate(device, endpointId);
-        return cluster.SetFabric(onSuccessCallback->Cancel(), onFailureCallback->Cancel(),
-                                 chip::ByteSpan(chip::Uint8::from_char(mFabricId), strlen(mFabricId)),
-                                 chip::ByteSpan(chip::Uint8::from_char(mFabricSecret), strlen(mFabricSecret)), mBreadcrumb,
-                                 mTimeoutMs);
+        return cluster.SetFabric(onSuccessCallback->Cancel(), onFailureCallback->Cancel(),  chip::ByteSpan(chip::Uint8::from_char(mFabricId), strlen(mFabricId)),  chip::ByteSpan(chip::Uint8::from_char(mFabricSecret), strlen(mFabricSecret)), mBreadcrumb, mTimeoutMs);
     }
 
 private:
-    chip::Callback::Callback<GeneralCommissioningClusterSetFabricResponseCallback> * onSuccessCallback =
-        new chip::Callback::Callback<GeneralCommissioningClusterSetFabricResponseCallback>(
-            OnGeneralCommissioningClusterSetFabricResponse, this);
-    chip::Callback::Callback<DefaultFailureCallback> * onFailureCallback =
-        new chip::Callback::Callback<DefaultFailureCallback>(OnDefaultFailureResponse, this);
+    chip::Callback::Callback<GeneralCommissioningClusterSetFabricResponseCallback> * onSuccessCallback = new chip::Callback::Callback<GeneralCommissioningClusterSetFabricResponseCallback>(OnGeneralCommissioningClusterSetFabricResponse, this);
+    chip::Callback::Callback<DefaultFailureCallback> * onFailureCallback = new chip::Callback::Callback<DefaultFailureCallback>(OnDefaultFailureResponse, this);
     char * mFabricId;
     char * mFabricSecret;
     uint64_t mBreadcrumb;
     uint32_t mTimeoutMs;
 };
 
+
 /*
  * Discover Attributes
  */
-class DiscoverGeneralCommissioningAttributes : public ModelCommand
+class DiscoverGeneralCommissioningAttributes: public ModelCommand
 {
 public:
-    DiscoverGeneralCommissioningAttributes() : ModelCommand("discover") { ModelCommand::AddArguments(); }
+    DiscoverGeneralCommissioningAttributes(): ModelCommand("discover")
+    {
+        ModelCommand::AddArguments();
+    }
 
     CHIP_ERROR SendCommand(ChipDevice * device, uint8_t endpointId) override
     {
@@ -5104,16 +5102,14 @@ public:
     }
 
 private:
-    chip::Callback::Callback<Int64uAttributeCallback> * onSuccessCallback =
-        new chip::Callback::Callback<Int64uAttributeCallback>(OnInt64uAttributeResponse, this);
-    chip::Callback::Callback<DefaultFailureCallback> * onFailureCallback =
-        new chip::Callback::Callback<DefaultFailureCallback>(OnDefaultFailureResponse, this);
+    chip::Callback::Callback<Int64uAttributeCallback> * onSuccessCallback = new chip::Callback::Callback<Int64uAttributeCallback>(OnInt64uAttributeResponse, this);
+    chip::Callback::Callback<DefaultFailureCallback> * onFailureCallback = new chip::Callback::Callback<DefaultFailureCallback>(OnDefaultFailureResponse, this);
 };
 
-class WriteGeneralCommissioningBreadcrumb : public ModelCommand
+class WriteGeneralCommissioningBreadcrumb: public ModelCommand
 {
 public:
-    WriteGeneralCommissioningBreadcrumb() : ModelCommand("write")
+    WriteGeneralCommissioningBreadcrumb(): ModelCommand("write")
     {
         AddArgument("attr-name", "breadcrumb");
         AddArgument("attr-value", 0, UINT64_MAX, &mValue);

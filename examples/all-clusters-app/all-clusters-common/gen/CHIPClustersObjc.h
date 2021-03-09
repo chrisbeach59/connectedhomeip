@@ -310,11 +310,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)armFailSafe:(uint16_t)expiryLengthSeconds breadcrumb:(uint64_t)breadcrumb timeoutMs:(uint32_t)timeoutMs completionHandler:(ResponseHandler)completionHandler;
 - (void)commissioningComplete:(ResponseHandler)completionHandler;
-- (void)setFabric:(NSData *)fabricId
-         fabricSecret:(NSData *)fabricSecret
-           breadcrumb:(uint64_t)breadcrumb
-            timeoutMs:(uint32_t)timeoutMs
-    completionHandler:(ResponseHandler)completionHandler;
+- (void)setFabric:(NSData *)fabricId fabricSecret:(NSData *)fabricSecret breadcrumb:(uint64_t)breadcrumb timeoutMs:(uint32_t)timeoutMs completionHandler:(ResponseHandler)completionHandler;
 
 - (void)readAttributeFabricId:(ResponseHandler)completionHandler;
 - (void)readAttributeBreadcrumb:(ResponseHandler)completionHandler;
