@@ -259,35 +259,12 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getWeekdaySchedule:(uint8_t)scheduleId userId:(uint16_t)userId completionHandler:(ResponseHandler)completionHandler;
 - (void)getYeardaySchedule:(uint8_t)scheduleId userId:(uint16_t)userId completionHandler:(ResponseHandler)completionHandler;
 - (void)lockDoor:(NSString *)pin completionHandler:(ResponseHandler)completionHandler;
-- (void)setHolidaySchedule:(uint8_t)scheduleId
-                localStartTime:(uint32_t)localStartTime
-                  localEndTime:(uint32_t)localEndTime
-    operatingModeDuringHoliday:(uint8_t)operatingModeDuringHoliday
-             completionHandler:(ResponseHandler)completionHandler;
-- (void)setPin:(uint16_t)userId
-           userStatus:(uint8_t)userStatus
-             userType:(uint8_t)userType
-                  pin:(NSString *)pin
-    completionHandler:(ResponseHandler)completionHandler;
-- (void)setRfid:(uint16_t)userId
-           userStatus:(uint8_t)userStatus
-             userType:(uint8_t)userType
-                   id:(NSString *)id
-    completionHandler:(ResponseHandler)completionHandler;
+- (void)setHolidaySchedule:(uint8_t)scheduleId localStartTime:(uint32_t)localStartTime localEndTime:(uint32_t)localEndTime operatingModeDuringHoliday:(uint8_t)operatingModeDuringHoliday completionHandler:(ResponseHandler)completionHandler;
+- (void)setPin:(uint16_t)userId userStatus:(uint8_t)userStatus userType:(uint8_t)userType pin:(NSString *)pin completionHandler:(ResponseHandler)completionHandler;
+- (void)setRfid:(uint16_t)userId userStatus:(uint8_t)userStatus userType:(uint8_t)userType id:(NSString *)id completionHandler:(ResponseHandler)completionHandler;
 - (void)setUserType:(uint16_t)userId userType:(uint8_t)userType completionHandler:(ResponseHandler)completionHandler;
-- (void)setWeekdaySchedule:(uint8_t)scheduleId
-                    userId:(uint16_t)userId
-                  daysMask:(uint8_t)daysMask
-                 startHour:(uint8_t)startHour
-               startMinute:(uint8_t)startMinute
-                   endHour:(uint8_t)endHour
-                 endMinute:(uint8_t)endMinute
-         completionHandler:(ResponseHandler)completionHandler;
-- (void)setYeardaySchedule:(uint8_t)scheduleId
-                    userId:(uint16_t)userId
-            localStartTime:(uint32_t)localStartTime
-              localEndTime:(uint32_t)localEndTime
-         completionHandler:(ResponseHandler)completionHandler;
+- (void)setWeekdaySchedule:(uint8_t)scheduleId userId:(uint16_t)userId daysMask:(uint8_t)daysMask startHour:(uint8_t)startHour startMinute:(uint8_t)startMinute endHour:(uint8_t)endHour endMinute:(uint8_t)endMinute completionHandler:(ResponseHandler)completionHandler;
+- (void)setYeardaySchedule:(uint8_t)scheduleId userId:(uint16_t)userId localStartTime:(uint32_t)localStartTime localEndTime:(uint32_t)localEndTime completionHandler:(ResponseHandler)completionHandler;
 - (void)unlockDoor:(NSString *)pin completionHandler:(ResponseHandler)completionHandler;
 - (void)unlockWithTimeout:(uint16_t)timeoutInSeconds pin:(NSString *)pin completionHandler:(ResponseHandler)completionHandler;
 
@@ -310,11 +287,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)armFailSafe:(uint16_t)expiryLengthSeconds breadcrumb:(uint64_t)breadcrumb timeoutMs:(uint32_t)timeoutMs completionHandler:(ResponseHandler)completionHandler;
 - (void)commissioningComplete:(ResponseHandler)completionHandler;
-- (void)setFabric:(NSData *)fabricId
-         fabricSecret:(NSData *)fabricSecret
-           breadcrumb:(uint64_t)breadcrumb
-            timeoutMs:(uint32_t)timeoutMs
-    completionHandler:(ResponseHandler)completionHandler;
+- (void)setFabric:(NSData *)fabricId fabricSecret:(NSData *)fabricSecret breadcrumb:(uint64_t)breadcrumb timeoutMs:(uint32_t)timeoutMs completionHandler:(ResponseHandler)completionHandler;
 
 - (void)readAttributeFabricId:(ResponseHandler)completionHandler;
 - (void)readAttributeBreadcrumb:(ResponseHandler)completionHandler;
@@ -332,9 +305,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CHIPGroups : CHIPCluster
 
 - (void)addGroup:(uint16_t)groupId groupName:(NSString *)groupName completionHandler:(ResponseHandler)completionHandler;
-- (void)addGroupIfIdentifying:(uint16_t)groupId
-                    groupName:(NSString *)groupName
-            completionHandler:(ResponseHandler)completionHandler;
+- (void)addGroupIfIdentifying:(uint16_t)groupId groupName:(NSString *)groupName completionHandler:(ResponseHandler)completionHandler;
 - (void)getGroupMembership:(uint8_t)groupCount groupList:(uint16_t)groupList completionHandler:(ResponseHandler)completionHandler;
 - (void)removeAllGroups:(ResponseHandler)completionHandler;
 - (void)removeGroup:(uint16_t)groupId completionHandler:(ResponseHandler)completionHandler;
@@ -390,7 +361,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  * Cluster Low Power
- *
+ *    
  */
 @interface CHIPLowPower : CHIPCluster
 
@@ -399,6 +370,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)readAttributeClusterRevision:(ResponseHandler)completionHandler;
 
 @end
+
+
 
 /**
  * Cluster Media Playback
@@ -449,14 +422,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface CHIPScenes : CHIPCluster
 
-- (void)addScene:(uint16_t)groupId
-              sceneId:(uint8_t)sceneId
-       transitionTime:(uint16_t)transitionTime
-            sceneName:(NSString *)sceneName
-            clusterId:(uint16_t)clusterId
-               length:(uint8_t)length
-                value:(uint8_t)value
-    completionHandler:(ResponseHandler)completionHandler;
+- (void)addScene:(uint16_t)groupId sceneId:(uint8_t)sceneId transitionTime:(uint16_t)transitionTime sceneName:(NSString *)sceneName clusterId:(uint16_t)clusterId length:(uint8_t)length value:(uint8_t)value completionHandler:(ResponseHandler)completionHandler;
 - (void)getSceneMembership:(uint16_t)groupId completionHandler:(ResponseHandler)completionHandler;
 - (void)recallScene:(uint16_t)groupId sceneId:(uint8_t)sceneId transitionTime:(uint16_t)transitionTime completionHandler:(ResponseHandler)completionHandler;
 - (void)removeAllScenes:(uint16_t)groupId completionHandler:(ResponseHandler)completionHandler;

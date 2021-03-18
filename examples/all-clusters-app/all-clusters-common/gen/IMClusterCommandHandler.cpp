@@ -2072,8 +2072,8 @@ void DispatchServerCommand(app::Command * command, CommandId commandId, Endpoint
         switch (commandId)
         {
         case ZCL_SLEEP_COMMAND_ID: {
-            // TODO(#5098) We should pass the Command Object and EndpointId to the cluster callbacks.
-            emberAfLowPowerClusterSleepCallback();
+        // TODO(#5098) We should pass the Command Object and EndpointId to the cluster callbacks.
+        emberAfLowPowerClusterSleepCallback();
             break;
         }
         default: {
@@ -2086,7 +2086,7 @@ void DispatchServerCommand(app::Command * command, CommandId commandId, Endpoint
     }
 }
 
-} // namespace LowPower
+}
 
 namespace MediaPlayback {
 
@@ -2591,10 +2591,10 @@ void DispatchSingleClusterCommand(chip::ClusterId aClusterId, chip::CommandId aC
     case ZCL_LEVEL_CONTROL_CLUSTER_ID :
         clusters::LevelControl::DispatchServerCommand(apCommandObj, aCommandId, aEndPointId, aReader);
         break;
-    case ZCL_LOW_POWER_CLUSTER_ID:
+    case ZCL_LOW_POWER_CLUSTER_ID :
         clusters::LowPower::DispatchServerCommand(apCommandObj, aCommandId, aEndPointId, aReader);
         break;
-    case ZCL_MEDIA_PLAYBACK_CLUSTER_ID:
+    case ZCL_MEDIA_PLAYBACK_CLUSTER_ID :
         clusters::MediaPlayback::DispatchServerCommand(apCommandObj, aCommandId, aEndPointId, aReader);
         break;
     case ZCL_ON_OFF_CLUSTER_ID :

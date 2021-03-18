@@ -145,6 +145,7 @@ void emberAfIdentifyClusterInitCallback(chip::EndpointId endpoint);
  */
 void emberAfLevelControlClusterInitCallback(chip::EndpointId endpoint);
 
+
 /** @brief Low Power Cluster Init
  *
  * Cluster Init
@@ -152,6 +153,7 @@ void emberAfLevelControlClusterInitCallback(chip::EndpointId endpoint);
  * @param endpoint    Endpoint that is being initialized
  */
 void emberAfLowPowerClusterInitCallback(chip::EndpointId endpoint);
+
 
 /** @brief Media Playback Cluster Init
  *
@@ -998,9 +1000,7 @@ void emberAfLowPowerClusterServerAttributeChangedCallback(chip::EndpointId endpo
  * @param attributeId       Attribute that changed
  * @param manufacturerCode  Manufacturer Code of the attribute that changed
  */
-void emberAfLowPowerClusterServerManufacturerSpecificAttributeChangedCallback(chip::EndpointId endpoint,
-                                                                              chip::AttributeId attributeId,
-                                                                              uint16_t manufacturerCode);
+void emberAfLowPowerClusterServerManufacturerSpecificAttributeChangedCallback(chip::EndpointId endpoint, chip::AttributeId attributeId, uint16_t manufacturerCode);
 
 /** @brief Low Power Cluster Server Message Sent
  *
@@ -1013,9 +1013,7 @@ void emberAfLowPowerClusterServerManufacturerSpecificAttributeChangedCallback(ch
  * @param message            The message that was sent
  * @param status             The status of the sent message
  */
-void emberAfLowPowerClusterServerMessageSentCallback(EmberOutgoingMessageType type, uint64_t indexOrDestination,
-                                                     EmberApsFrame * apsFrame, uint16_t msgLen, uint8_t * message,
-                                                     EmberStatus status);
+void emberAfLowPowerClusterServerMessageSentCallback(EmberOutgoingMessageType type, uint64_t indexOrDestination, EmberApsFrame * apsFrame, uint16_t msgLen, uint8_t * message, EmberStatus status);
 
 /** @brief Low Power Cluster Server Pre Attribute Changed
  *
@@ -1027,9 +1025,7 @@ void emberAfLowPowerClusterServerMessageSentCallback(EmberOutgoingMessageType ty
  * @param size          Attribute size
  * @param value         Attribute value
  */
-EmberAfStatus emberAfLowPowerClusterServerPreAttributeChangedCallback(chip::EndpointId endpoint, chip::AttributeId attributeId,
-                                                                      EmberAfAttributeType attributeType, uint8_t size,
-                                                                      uint8_t * value);
+EmberAfStatus emberAfLowPowerClusterServerPreAttributeChangedCallback(chip::EndpointId endpoint, chip::AttributeId attributeId, EmberAfAttributeType attributeType, uint8_t size, uint8_t * value);
 
 /** @brief Low Power Cluster Server Tick
  *
@@ -1381,12 +1377,12 @@ bool emberAfBarrierControlClusterBarrierControlStopCallback();
 bool emberAfBasicClusterMfgSpecificPingCallback();
 
 /**
- * @brief Binding Cluster Bind Command callback
- * @param nodeId
- * @param groupId
- * @param endpointId
- * @param clusterId
- */
+* @brief Binding Cluster Bind Command callback
+* @param nodeId
+* @param groupId
+* @param endpointId
+* @param clusterId
+*/
 
 bool emberAfBindingClusterBindCallback(chip::NodeId nodeId, chip::GroupId groupId, chip::EndpointId endpointId, chip::ClusterId clusterId);
 
@@ -1905,14 +1901,14 @@ bool emberAfLevelControlClusterStopCallback(uint8_t optionMask, uint8_t optionOv
 bool emberAfLevelControlClusterStopWithOnOffCallback();
 
 /**
- * @brief Low Power Cluster Sleep Command callback
- */
+* @brief Low Power Cluster Sleep Command callback
+*/
 
 bool emberAfLowPowerClusterSleepCallback();
 
 /**
- * @brief Media Playback Cluster FastForwardRequest Command callback
- */
+* @brief Media Playback Cluster FastForwardRequest Command callback
+*/
 
 bool emberAfMediaPlaybackClusterFastForwardRequestCallback();
 

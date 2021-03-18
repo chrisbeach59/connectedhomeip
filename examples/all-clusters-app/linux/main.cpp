@@ -40,9 +40,62 @@ using namespace chip::Inet;
 using namespace chip::Transport;
 using namespace chip::DeviceLayer;
 
+uint8_t translateZclTemp(int16_t temperature)
+{
+int32_t x = temperature;
+//rearrangement of
+// = (x * (9/5) / 100 + 32) * 2;
+// the added 250 is for proper rounding.
+// a rounding technique that only works
+// with positive numbers
+return (uint8_t) ((x*9*2 + 250)/ (5*100) + 64);
+}
+
 void emberAfPostAttributeChangeCallback(EndpointId endpoint, ClusterId clusterId, AttributeId attributeId, uint8_t mask,
                                         uint16_t manufacturerCode, uint8_t type, uint8_t size, uint8_t * value)
-{}
+{
+    printf("emberAfPostAttributeChangeCallback!\r\n");
+    printf("Endpoint: %i\r\n", endpoint);
+    printf("clusterId: 0x%x\r\n", clusterId);
+    printf("attributeId: 0x%x\r\n", attributeId);
+    printf("mask: 0x%x\r\n", mask);
+    printf("manufacturerCode: 0x%x\r\n", manufacturerCode);
+    printf("type: 0x%x\r\n", type);
+    printf("size: %i\r\n", size);
+    printf("value: %i\r\n", *((uint16_t *)value));
+
+    uint8_t convertedTemp;
+    // TODO Setpoints are showing as type 0x21 not 0x29.  Need to research this
+    switch (attributeId)
+    {
+        case ZCL_OCCUPIED_COOLING_SETPOINT_ATTRIBUTE_ID:
+        {
+            convertedTemp = translateZclTemp(*((int16_t *)value));
+            printf("====================================\r\n");
+            printf("Cooling Setpoint now set to: %d", convertedTemp/2);
+            if (convertedTemp % 2 != 0)
+                printf(".5\r\n");
+            else
+                printf("\r\n");
+            printf("====================================\r\n");
+
+            break;
+        }
+        case ZCL_OCCUPIED_HEATING_SETPOINT_ATTRIBUTE_ID:
+        {
+            convertedTemp = translateZclTemp(*((int16_t *)value));
+            printf("====================================\r\n");
+            printf("Heating Setpoint now set to: %d", convertedTemp/2);
+            if (convertedTemp % 2 != 0)
+                printf(".5\r\n");
+            else
+                printf("\r\n");
+            printf("====================================\r\n");
+            break;
+        }
+        
+    }
+}
 
 bool emberAfBasicClusterMfgSpecificPingCallback(void)
 {

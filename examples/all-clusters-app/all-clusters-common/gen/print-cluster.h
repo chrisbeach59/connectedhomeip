@@ -145,9 +145,9 @@
 #endif
 
 #if defined(ZCL_USING_BASIC_CLUSTER_SERVER) || defined(ZCL_USING_BASIC_CLUSTER_CLIENT)
-#define CHIP_PRINTCLUSTER_BASIC_CLUSTER { ZCL_BASIC_CLUSTER_ID, 40, "Basic" },
+    #define CHIP_PRINTCLUSTER_BASIC_CLUSTER {ZCL_BASIC_CLUSTER_ID, 40, "Basic" },
 #else
-#define CHIP_PRINTCLUSTER_BASIC_CLUSTER
+    #define CHIP_PRINTCLUSTER_BASIC_CLUSTER
 #endif
 
 #if defined(ZCL_USING_GENERAL_COMMISSIONING_CLUSTER_SERVER) || defined(ZCL_USING_GENERAL_COMMISSIONING_CLUSTER_CLIENT)
@@ -463,9 +463,9 @@
 #endif
 
 #if defined(ZCL_USING_LOW_POWER_CLUSTER_SERVER) || defined(ZCL_USING_LOW_POWER_CLUSTER_CLIENT)
-#define CHIP_PRINTCLUSTER_LOW_POWER_CLUSTER { ZCL_LOW_POWER_CLUSTER_ID, 1288, "Low Power" },
+    #define CHIP_PRINTCLUSTER_LOW_POWER_CLUSTER {ZCL_LOW_POWER_CLUSTER_ID, 1288, "Low Power" },
 #else
-#define CHIP_PRINTCLUSTER_LOW_POWER_CLUSTER
+    #define CHIP_PRINTCLUSTER_LOW_POWER_CLUSTER
 #endif
 
 #if defined(ZCL_USING_APPLICATION_BASIC_CLUSTER_SERVER) || defined(ZCL_USING_APPLICATION_BASIC_CLUSTER_CLIENT)
@@ -720,126 +720,8 @@
     #define CHIP_PRINTCLUSTER_SL_WWAH_CLUSTER
 #endif
 
-#define CLUSTER_IDS_TO_NAMES                                                                                                       \
-    CHIP_PRINTCLUSTER_POWER_CONFIG_CLUSTER                                                                                         \
-    CHIP_PRINTCLUSTER_DEVICE_TEMP_CLUSTER                                                                                          \
-    CHIP_PRINTCLUSTER_IDENTIFY_CLUSTER                                                                                             \
-    CHIP_PRINTCLUSTER_GROUPS_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_SCENES_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_ON_OFF_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_ON_OFF_SWITCH_CONFIG_CLUSTER                                                                                 \
-    CHIP_PRINTCLUSTER_LEVEL_CONTROL_CLUSTER                                                                                        \
-    CHIP_PRINTCLUSTER_ALARM_CLUSTER                                                                                                \
-    CHIP_PRINTCLUSTER_TIME_CLUSTER                                                                                                 \
-    CHIP_PRINTCLUSTER_RSSI_LOCATION_CLUSTER                                                                                        \
-    CHIP_PRINTCLUSTER_BINARY_INPUT_BASIC_CLUSTER                                                                                   \
-    CHIP_PRINTCLUSTER_COMMISSIONING_CLUSTER                                                                                        \
-    CHIP_PRINTCLUSTER_PARTITION_CLUSTER                                                                                            \
-    CHIP_PRINTCLUSTER_OTA_BOOTLOAD_CLUSTER                                                                                         \
-    CHIP_PRINTCLUSTER_POWER_PROFILE_CLUSTER                                                                                        \
-    CHIP_PRINTCLUSTER_APPLIANCE_CONTROL_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_POLL_CONTROL_CLUSTER                                                                                         \
-    CHIP_PRINTCLUSTER_GREEN_POWER_CLUSTER                                                                                          \
-    CHIP_PRINTCLUSTER_KEEPALIVE_CLUSTER                                                                                            \
-    CHIP_PRINTCLUSTER_BASIC_CLUSTER                                                                                                \
-    CHIP_PRINTCLUSTER_GENERAL_COMMISSIONING_CLUSTER                                                                                \
-    CHIP_PRINTCLUSTER_SHADE_CONFIG_CLUSTER                                                                                         \
-    CHIP_PRINTCLUSTER_DOOR_LOCK_CLUSTER                                                                                            \
-    CHIP_PRINTCLUSTER_WINDOW_COVERING_CLUSTER                                                                                      \
-    CHIP_PRINTCLUSTER_BARRIER_CONTROL_CLUSTER                                                                                      \
-    CHIP_PRINTCLUSTER_PUMP_CONFIG_CONTROL_CLUSTER                                                                                  \
-    CHIP_PRINTCLUSTER_THERMOSTAT_CLUSTER                                                                                           \
-    CHIP_PRINTCLUSTER_FAN_CONTROL_CLUSTER                                                                                          \
-    CHIP_PRINTCLUSTER_DEHUMID_CONTROL_CLUSTER                                                                                      \
-    CHIP_PRINTCLUSTER_THERMOSTAT_UI_CONFIG_CLUSTER                                                                                 \
-    CHIP_PRINTCLUSTER_COLOR_CONTROL_CLUSTER                                                                                        \
-    CHIP_PRINTCLUSTER_BALLAST_CONFIGURATION_CLUSTER                                                                                \
-    CHIP_PRINTCLUSTER_ILLUM_MEASUREMENT_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_ILLUM_LEVEL_SENSING_CLUSTER                                                                                  \
-    CHIP_PRINTCLUSTER_TEMP_MEASUREMENT_CLUSTER                                                                                     \
-    CHIP_PRINTCLUSTER_PRESSURE_MEASUREMENT_CLUSTER                                                                                 \
-    CHIP_PRINTCLUSTER_FLOW_MEASUREMENT_CLUSTER                                                                                     \
-    CHIP_PRINTCLUSTER_RELATIVE_HUMIDITY_MEASUREMENT_CLUSTER                                                                        \
-    CHIP_PRINTCLUSTER_OCCUPANCY_SENSING_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_CARBON_MONOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                            \
-    CHIP_PRINTCLUSTER_CARBON_DIOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                             \
-    CHIP_PRINTCLUSTER_ETHYLENE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                   \
-    CHIP_PRINTCLUSTER_ETHYLENE_OXIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                             \
-    CHIP_PRINTCLUSTER_HYDROGEN_CONCENTRATION_MEASUREMENT_CLUSTER                                                                   \
-    CHIP_PRINTCLUSTER_HYDROGEN_SULPHIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                          \
-    CHIP_PRINTCLUSTER_NITRIC_OXIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                               \
-    CHIP_PRINTCLUSTER_NITROGEN_DIOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                           \
-    CHIP_PRINTCLUSTER_OXYGEN_CONCENTRATION_MEASUREMENT_CLUSTER                                                                     \
-    CHIP_PRINTCLUSTER_OZONE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                      \
-    CHIP_PRINTCLUSTER_SULFUR_DIOXIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                             \
-    CHIP_PRINTCLUSTER_DISSOLVED_OXYGEN_CONCENTRATION_MEASUREMENT_CLUSTER                                                           \
-    CHIP_PRINTCLUSTER_BROMATE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                    \
-    CHIP_PRINTCLUSTER_CHLORAMINES_CONCENTRATION_MEASUREMENT_CLUSTER                                                                \
-    CHIP_PRINTCLUSTER_CHLORINE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                   \
-    CHIP_PRINTCLUSTER_FECAL_COLIFORM_AND_E_COLI_CONCENTRATION_MEASUREMENT_CLUSTER                                                  \
-    CHIP_PRINTCLUSTER_FLUORIDE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                   \
-    CHIP_PRINTCLUSTER_HALOACETIC_ACIDS_CONCENTRATION_MEASUREMENT_CLUSTER                                                           \
-    CHIP_PRINTCLUSTER_TOTAL_TRIHALOMETHANES_CONCENTRATION_MEASUREMENT_CLUSTER                                                      \
-    CHIP_PRINTCLUSTER_TOTAL_COLIFORM_BACTERIA_CONCENTRATION_MEASUREMENT_CLUSTER                                                    \
-    CHIP_PRINTCLUSTER_TURBIDITY_CONCENTRATION_MEASUREMENT_CLUSTER                                                                  \
-    CHIP_PRINTCLUSTER_COPPER_CONCENTRATION_MEASUREMENT_CLUSTER                                                                     \
-    CHIP_PRINTCLUSTER_LEAD_CONCENTRATION_MEASUREMENT_CLUSTER                                                                       \
-    CHIP_PRINTCLUSTER_MANGANESE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                  \
-    CHIP_PRINTCLUSTER_SULFATE_CONCENTRATION_MEASUREMENT_CLUSTER                                                                    \
-    CHIP_PRINTCLUSTER_BROMODICHLOROMETHANE_CONCENTRATION_MEASUREMENT_CLUSTER                                                       \
-    CHIP_PRINTCLUSTER_BROMOFORM_CONCENTRATION_MEASUREMENT_CLUSTER                                                                  \
-    CHIP_PRINTCLUSTER_CHLORODIBROMOMETHANE_CONCENTRATION_MEASUREMENT_CLUSTER                                                       \
-    CHIP_PRINTCLUSTER_CHLOROFORM_CONCENTRATION_MEASUREMENT_CLUSTER                                                                 \
-    CHIP_PRINTCLUSTER_SODIUM_CONCENTRATION_MEASUREMENT_CLUSTER                                                                     \
-    CHIP_PRINTCLUSTER_IAS_ZONE_CLUSTER                                                                                             \
-    CHIP_PRINTCLUSTER_IAS_ACE_CLUSTER                                                                                              \
-    CHIP_PRINTCLUSTER_IAS_WD_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_LOW_POWER_CLUSTER                                                                                            \
-    CHIP_PRINTCLUSTER_APPLICATION_BASIC_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_GENERIC_TUNNEL_CLUSTER                                                                                       \
-    CHIP_PRINTCLUSTER_BACNET_PROTOCOL_TUNNEL_CLUSTER                                                                               \
-    CHIP_PRINTCLUSTER_11073_PROTOCOL_TUNNEL_CLUSTER                                                                                \
-    CHIP_PRINTCLUSTER_ISO7816_PROTOCOL_TUNNEL_CLUSTER                                                                              \
-    CHIP_PRINTCLUSTER_PRICE_CLUSTER                                                                                                \
-    CHIP_PRINTCLUSTER_DEMAND_RESPONSE_LOAD_CONTROL_CLUSTER                                                                         \
-    CHIP_PRINTCLUSTER_SIMPLE_METERING_CLUSTER                                                                                      \
-    CHIP_PRINTCLUSTER_MESSAGING_CLUSTER                                                                                            \
-    CHIP_PRINTCLUSTER_TUNNELING_CLUSTER                                                                                            \
-    CHIP_PRINTCLUSTER_PREPAYMENT_CLUSTER                                                                                           \
-    CHIP_PRINTCLUSTER_ENERGY_MANAGEMENT_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_CALENDAR_CLUSTER                                                                                             \
-    CHIP_PRINTCLUSTER_DEVICE_MANAGEMENT_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_EVENTS_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_MDU_PAIRING_CLUSTER                                                                                          \
-    CHIP_PRINTCLUSTER_SUB_GHZ_CLUSTER                                                                                              \
-    CHIP_PRINTCLUSTER_KEY_ESTABLISHMENT_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_INFORMATION_CLUSTER                                                                                          \
-    CHIP_PRINTCLUSTER_DATA_SHARING_CLUSTER                                                                                         \
-    CHIP_PRINTCLUSTER_GAMING_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_DATA_RATE_CONTROL_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_VOICE_OVER_ZIGBEE_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_CHATTING_CLUSTER                                                                                             \
-    CHIP_PRINTCLUSTER_PAYMENT_CLUSTER                                                                                              \
-    CHIP_PRINTCLUSTER_BILLING_CLUSTER                                                                                              \
-    CHIP_PRINTCLUSTER_APPLIANCE_IDENTIFICATION_CLUSTER                                                                             \
-    CHIP_PRINTCLUSTER_METER_IDENTIFICATION_CLUSTER                                                                                 \
-    CHIP_PRINTCLUSTER_APPLIANCE_EVENTS_AND_ALERT_CLUSTER                                                                           \
-    CHIP_PRINTCLUSTER_APPLIANCE_STATISTICS_CLUSTER                                                                                 \
-    CHIP_PRINTCLUSTER_ELECTRICAL_MEASUREMENT_CLUSTER                                                                               \
-    CHIP_PRINTCLUSTER_DIAGNOSTICS_CLUSTER                                                                                          \
-    CHIP_PRINTCLUSTER_ZLL_COMMISSIONING_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_NETWORK_COMMISSIONING_CLUSTER                                                                                \
-    CHIP_PRINTCLUSTER_BINDING_CLUSTER                                                                                              \
-    CHIP_PRINTCLUSTER_MEDIA_PLAYBACK_CLUSTER                                                                                       \
-    CHIP_PRINTCLUSTER_CONTENT_LAUNCH_CLUSTER                                                                                       \
-    CHIP_PRINTCLUSTER_SAMPLE_MFG_SPECIFIC_CLUSTER                                                                                  \
-    CHIP_PRINTCLUSTER_SAMPLE_MFG_SPECIFIC_CLUSTER_2                                                                                \
-    CHIP_PRINTCLUSTER_OTA_CONFIGURATION_CLUSTER                                                                                    \
-    CHIP_PRINTCLUSTER_MFGLIB_CLUSTER                                                                                               \
-    CHIP_PRINTCLUSTER_SL_WWAH_CLUSTER
 
 #define CLUSTER_IDS_TO_NAMES \
-    CHIP_PRINTCLUSTER_BASIC_CLUSTER \
     CHIP_PRINTCLUSTER_POWER_CONFIG_CLUSTER \
     CHIP_PRINTCLUSTER_DEVICE_TEMP_CLUSTER \
     CHIP_PRINTCLUSTER_IDENTIFY_CLUSTER \
@@ -860,6 +742,7 @@
     CHIP_PRINTCLUSTER_POLL_CONTROL_CLUSTER \
     CHIP_PRINTCLUSTER_GREEN_POWER_CLUSTER \
     CHIP_PRINTCLUSTER_KEEPALIVE_CLUSTER \
+    CHIP_PRINTCLUSTER_BASIC_CLUSTER \
     CHIP_PRINTCLUSTER_GENERAL_COMMISSIONING_CLUSTER \
     CHIP_PRINTCLUSTER_SHADE_CONFIG_CLUSTER \
     CHIP_PRINTCLUSTER_DOOR_LOCK_CLUSTER \
@@ -912,6 +795,7 @@
     CHIP_PRINTCLUSTER_IAS_ZONE_CLUSTER \
     CHIP_PRINTCLUSTER_IAS_ACE_CLUSTER \
     CHIP_PRINTCLUSTER_IAS_WD_CLUSTER \
+    CHIP_PRINTCLUSTER_LOW_POWER_CLUSTER \
     CHIP_PRINTCLUSTER_APPLICATION_BASIC_CLUSTER \
     CHIP_PRINTCLUSTER_GENERIC_TUNNEL_CLUSTER \
     CHIP_PRINTCLUSTER_BACNET_PROTOCOL_TUNNEL_CLUSTER \

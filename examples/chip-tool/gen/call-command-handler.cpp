@@ -116,11 +116,11 @@ EmberAfStatus emberAfClusterSpecificCommandParse(EmberAfClusterCommand * cmd)
             // No commands are enabled for cluster Level Control
             result = status(false, true, cmd->mfgSpecific);
             break;
-        case ZCL_LOW_POWER_CLUSTER_ID:
+        case ZCL_LOW_POWER_CLUSTER_ID :
             // No commands are enabled for cluster Low Power
             result = status(false, true, cmd->mfgSpecific);
             break;
-        case ZCL_MEDIA_PLAYBACK_CLUSTER_ID:
+        case ZCL_MEDIA_PLAYBACK_CLUSTER_ID :
             result = emberAfMediaPlaybackClusterClientCommandParse(cmd);
             break;
         case ZCL_ON_OFF_CLUSTER_ID :

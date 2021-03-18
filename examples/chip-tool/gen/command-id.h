@@ -45,6 +45,9 @@
 #define ZCL_DISCOVER_ATTRIBUTES_EXTENDED_COMMAND_ID (0x15)
 #define ZCL_DISCOVER_ATTRIBUTES_EXTENDED_RESPONSE_COMMAND_ID (0x16)
 
+
+
+
 // Commands for cluster: Identify
 #define ZCL_IDENTIFY_COMMAND_ID (0x00)
 #define ZCL_IDENTIFY_QUERY_RESPONSE_COMMAND_ID (0x00)
@@ -224,6 +227,7 @@
 #define ZCL_GP_SINK_TABLE_RESPONSE_COMMAND_ID (0x0A)
 #define ZCL_GP_PROXY_TABLE_RESPONSE_COMMAND_ID (0x0B)
 #define ZCL_GP_PROXY_TABLE_REQUEST_COMMAND_ID (0x0B)
+
 
 // Commands for cluster: Basic
 #define ZCL_START_UP_COMMAND_ID (0x00)
@@ -419,6 +423,7 @@
 
 // Commands for cluster: Low Power
 #define ZCL_SLEEP_COMMAND_ID (0x00)
+
 
 // Commands for cluster: Generic Tunnel
 #define ZCL_MATCH_PROTOCOL_ADDRESS_COMMAND_ID (0x00)

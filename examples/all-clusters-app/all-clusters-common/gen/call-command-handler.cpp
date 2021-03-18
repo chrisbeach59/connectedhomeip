@@ -125,10 +125,10 @@ EmberAfStatus emberAfClusterSpecificCommandParse(EmberAfClusterCommand * cmd)
         case ZCL_LEVEL_CONTROL_CLUSTER_ID :
             result = emberAfLevelControlClusterServerCommandParse(cmd);
             break;
-        case ZCL_LOW_POWER_CLUSTER_ID:
+        case ZCL_LOW_POWER_CLUSTER_ID :
             result = emberAfLowPowerClusterServerCommandParse(cmd);
             break;
-        case ZCL_MEDIA_PLAYBACK_CLUSTER_ID:
+        case ZCL_MEDIA_PLAYBACK_CLUSTER_ID :
             result = emberAfMediaPlaybackClusterServerCommandParse(cmd);
             break;
         case ZCL_ON_OFF_CLUSTER_ID :
@@ -1815,7 +1815,7 @@ EmberAfStatus emberAfLowPowerClusterServerCommandParse(EmberAfClusterCommand * c
         switch (cmd->commandId)
         {
         case ZCL_SLEEP_COMMAND_ID: {
-            wasHandled = emberAfLowPowerClusterSleepCallback();
+        wasHandled = emberAfLowPowerClusterSleepCallback();
             break;
         }
         default: {

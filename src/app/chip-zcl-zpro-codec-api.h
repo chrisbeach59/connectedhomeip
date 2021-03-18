@@ -219,8 +219,7 @@ chip::System::PacketBufferHandle encodeBasicClusterDiscoverAttributes(uint8_t se
  * @brief
  *    Encode a Basic server read command for the InteractionModelVersion attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterReadInteractionModelVersionAttribute(uint8_t seqNum,
-                                                                                        chip::EndpointId destinationEndpoint);
+chip::System::PacketBufferHandle encodeBasicClusterReadInteractionModelVersionAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint);
 
 /**
  * @brief
@@ -256,8 +255,7 @@ chip::System::PacketBufferHandle encodeBasicClusterReadUserLabelAttribute(uint8_
  * @brief
  *    Encode a Basic server write command for the UserLabel attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterWriteUserLabelAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                           chip::ByteSpan userLabel);
+chip::System::PacketBufferHandle encodeBasicClusterWriteUserLabelAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint, chip::ByteSpan userLabel);
 
 /**
  * @brief
@@ -269,36 +267,31 @@ chip::System::PacketBufferHandle encodeBasicClusterReadLocationAttribute(uint8_t
  * @brief
  *    Encode a Basic server write command for the Location attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterWriteLocationAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                          chip::ByteSpan location);
+chip::System::PacketBufferHandle encodeBasicClusterWriteLocationAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint, chip::ByteSpan location);
 
 /**
  * @brief
  *    Encode a Basic server read command for the HardwareVersion attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterReadHardwareVersionAttribute(uint8_t seqNum,
-                                                                                chip::EndpointId destinationEndpoint);
+chip::System::PacketBufferHandle encodeBasicClusterReadHardwareVersionAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint);
 
 /**
  * @brief
  *    Encode a Basic server read command for the HardwareVersionString attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterReadHardwareVersionStringAttribute(uint8_t seqNum,
-                                                                                      chip::EndpointId destinationEndpoint);
+chip::System::PacketBufferHandle encodeBasicClusterReadHardwareVersionStringAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint);
 
 /**
  * @brief
  *    Encode a Basic server read command for the SoftwareVersion attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterReadSoftwareVersionAttribute(uint8_t seqNum,
-                                                                                chip::EndpointId destinationEndpoint);
+chip::System::PacketBufferHandle encodeBasicClusterReadSoftwareVersionAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint);
 
 /**
  * @brief
  *    Encode a Basic server read command for the SoftwareVersionString attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeBasicClusterReadSoftwareVersionStringAttribute(uint8_t seqNum,
-                                                                                      chip::EndpointId destinationEndpoint);
+chip::System::PacketBufferHandle encodeBasicClusterReadSoftwareVersionStringAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint);
 
 /**
  * @brief
@@ -1076,8 +1069,7 @@ chip::System::PacketBufferHandle encodeDoorLockClusterGetYeardayScheduleCommand(
  * @brief
  *    Encode an LockDoor command for Door Lock server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeDoorLockClusterLockDoorCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                      chip::ByteSpan pin);
+chip::System::PacketBufferHandle encodeDoorLockClusterLockDoorCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, chip::ByteSpan pin);
 
 /**
  * @brief
@@ -1089,17 +1081,13 @@ chip::System::PacketBufferHandle encodeDoorLockClusterSetHolidayScheduleCommand(
  * @brief
  *    Encode an SetPin command for Door Lock server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeDoorLockClusterSetPinCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                    uint16_t userId, uint8_t userStatus, uint8_t userType,
-                                                                    chip::ByteSpan pin);
+chip::System::PacketBufferHandle encodeDoorLockClusterSetPinCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, uint16_t userId, uint8_t userStatus, uint8_t userType, chip::ByteSpan pin);
 
 /**
  * @brief
  *    Encode an SetRfid command for Door Lock server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeDoorLockClusterSetRfidCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                     uint16_t userId, uint8_t userStatus, uint8_t userType,
-                                                                     chip::ByteSpan id);
+chip::System::PacketBufferHandle encodeDoorLockClusterSetRfidCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, uint16_t userId, uint8_t userStatus, uint8_t userType, chip::ByteSpan id);
 
 /**
  * @brief
@@ -1123,15 +1111,13 @@ chip::System::PacketBufferHandle encodeDoorLockClusterSetYeardayScheduleCommand(
  * @brief
  *    Encode an UnlockDoor command for Door Lock server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeDoorLockClusterUnlockDoorCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                        chip::ByteSpan pin);
+chip::System::PacketBufferHandle encodeDoorLockClusterUnlockDoorCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, chip::ByteSpan pin);
 
 /**
  * @brief
  *    Encode an UnlockWithTimeout command for Door Lock server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeDoorLockClusterUnlockWithTimeoutCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                               uint16_t timeoutInSeconds, chip::ByteSpan pin);
+chip::System::PacketBufferHandle encodeDoorLockClusterUnlockWithTimeoutCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, uint16_t timeoutInSeconds, chip::ByteSpan pin);
 
 /**
  * @brief
@@ -1251,16 +1237,13 @@ chip::System::PacketBufferHandle encodeGeneralCommissioningClusterReadClusterRev
  * @brief
  *    Encode an AddGroup command for Groups server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeGroupsClusterAddGroupCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                    uint16_t groupId, chip::ByteSpan groupName);
+chip::System::PacketBufferHandle encodeGroupsClusterAddGroupCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, uint16_t groupId, chip::ByteSpan groupName);
 
 /**
  * @brief
  *    Encode an AddGroupIfIdentifying command for Groups server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeGroupsClusterAddGroupIfIdentifyingCommand(uint8_t seqNum,
-                                                                                 chip::EndpointId destinationEndpoint,
-                                                                                 uint16_t groupId, chip::ByteSpan groupName);
+chip::System::PacketBufferHandle encodeGroupsClusterAddGroupIfIdentifyingCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, uint16_t groupId, chip::ByteSpan groupName);
 
 /**
  * @brief
@@ -1530,8 +1513,7 @@ chip::System::PacketBufferHandle encodeLowPowerClusterDiscoverAttributes(uint8_t
  * @brief
  *    Encode a Low Power server read command for the cluster revision attribute into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeLowPowerClusterReadClusterRevisionAttribute(uint8_t seqNum,
-                                                                                   chip::EndpointId destinationEndpoint);
+chip::System::PacketBufferHandle encodeLowPowerClusterReadClusterRevisionAttribute(uint8_t seqNum, chip::EndpointId destinationEndpoint);
 
 /*----------------------------------------------------------------------------*\
 | Cluster MediaPlayback                                               | 0xF001 |
@@ -1795,10 +1777,7 @@ chip::System::PacketBufferHandle encodeOnOffClusterReadClusterRevisionAttribute(
  * @brief
  *    Encode an AddScene command for Scenes server into buffer including the APS frame
  */
-chip::System::PacketBufferHandle encodeScenesClusterAddSceneCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint,
-                                                                    uint16_t groupId, uint8_t sceneId, uint16_t transitionTime,
-                                                                    chip::ByteSpan sceneName, chip::ClusterId clusterId,
-                                                                    uint8_t length, uint8_t value);
+chip::System::PacketBufferHandle encodeScenesClusterAddSceneCommand(uint8_t seqNum, chip::EndpointId destinationEndpoint, uint16_t groupId, uint8_t sceneId, uint16_t transitionTime, chip::ByteSpan sceneName, chip::ClusterId clusterId, uint8_t length, uint8_t value);
 
 /**
  * @brief

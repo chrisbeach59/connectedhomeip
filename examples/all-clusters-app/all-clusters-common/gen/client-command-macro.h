@@ -3101,28 +3101,40 @@
  *
  * Command: StartUp
  */
-#define emberAfFillCommandBasicClusterStartUp()                                                                                    \
-    emberAfFillExternalBuffer(mask,                                                                                                \
-                                                                                                                                   \
-                              ZCL_START_UP_COMMAND_ID, "", );
+#define emberAfFillCommandBasicClusterStartUp( \
+) \
+  emberAfFillExternalBuffer( \
+    mask, \
+     \
+    ZCL_START_UP_COMMAND_ID, \
+    "", \
+  );
 
 /** @brief Command description for ShutDown
  *
  * Command: ShutDown
  */
-#define emberAfFillCommandBasicClusterShutDown()                                                                                   \
-    emberAfFillExternalBuffer(mask,                                                                                                \
-                                                                                                                                   \
-                              ZCL_SHUT_DOWN_COMMAND_ID, "", );
+#define emberAfFillCommandBasicClusterShutDown( \
+) \
+  emberAfFillExternalBuffer( \
+    mask, \
+     \
+    ZCL_SHUT_DOWN_COMMAND_ID, \
+    "", \
+  );
 
 /** @brief Command description for Leave
  *
  * Command: Leave
  */
-#define emberAfFillCommandBasicClusterLeave()                                                                                      \
-    emberAfFillExternalBuffer(mask,                                                                                                \
-                                                                                                                                   \
-                              ZCL_LEAVE_COMMAND_ID, "", );
+#define emberAfFillCommandBasicClusterLeave( \
+) \
+  emberAfFillExternalBuffer( \
+    mask, \
+     \
+    ZCL_LEAVE_COMMAND_ID, \
+    "", \
+  );
 
 /** @brief Command description for SetFabric
  *
@@ -5160,10 +5172,14 @@
  *
  * Command: Sleep
  */
-#define emberAfFillCommandLow                                                                                                      \
-    PowerClusterSleep() emberAfFillExternalBuffer(mask,                                                                            \
-                                                                                                                                   \
-                                                  ZCL_SLEEP_COMMAND_ID, "", );
+#define emberAfFillCommandLow PowerClusterSleep( \
+) \
+  emberAfFillExternalBuffer( \
+    mask, \
+     \
+    ZCL_SLEEP_COMMAND_ID, \
+    "", \
+  );
 
 /** @brief Command description for MatchProtocolAddress
  *
