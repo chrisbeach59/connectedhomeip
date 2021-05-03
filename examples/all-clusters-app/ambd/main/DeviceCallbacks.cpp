@@ -29,14 +29,14 @@
 //#include "Globals.h"
 //#include "LEDWidget.h"
 //#include "WiFiWidget.h"
-//#include "esp_heap_caps.h"
-//#include "esp_log.h"
 #include "gen/attribute-id.h"
 #include "gen/cluster-id.h"
+#include <app/Command.h>
+#include <app/server/Mdns.h>
 #include <app/util/basic-types.h>
-//#include <app/util/util.h>
-//#include <lib/mdns/Advertiser.h>
-//#include <support/CodeUtils.h>
+#include <app/util/util.h>
+#include <lib/mdns/Advertiser.h>
+#include <support/CodeUtils.h>
 #include <support/logging/CHIPLogging.h>
 #include <support/logging/Constants.h>
 
@@ -174,7 +174,7 @@ exit:
     return;
 }
 
-bool emberAfBasicClusterMfgSpecificPingCallback(void)
+bool emberAfBasicClusterMfgSpecificPingCallback(chip::app::Command * commandObj)
 {
     emberAfSendDefaultResponse(emberAfCurrentCommand(), EMBER_ZCL_STATUS_SUCCESS);
     return true;
