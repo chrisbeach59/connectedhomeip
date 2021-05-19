@@ -83,6 +83,26 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "ChipTool (Linux)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/out/debug/standalone/chip-tool",
+            "args": ["thermostat", "read", "occupied-heating-setpoint", "1"],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "preLaunchTask": "",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ]
 }
