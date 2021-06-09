@@ -69,7 +69,7 @@ void DeviceCallbacks::DeviceEventCallback(const ChipDeviceEvent * event, intptr_
 }
 
 void DeviceCallbacks::PostAttributeChangeCallback(EndpointId endpointId, ClusterId clusterId, AttributeId attributeId, uint8_t mask,
-                                                  uint16_t manufacturerCode, uint8_t type, uint16_t size, uint8_t * value)
+                                                  uint16_t manufacturerCode, uint8_t type, uint8_t size, uint8_t * value)
 {
     printf("[%s] PostAttributeChangeCallback - Cluster ID: 0x%04x, EndPoint ID: 0x%02x, Attribute ID: 0x%04x\r\n", TAG, clusterId,
                   endpointId, attributeId);
@@ -80,9 +80,9 @@ void DeviceCallbacks::PostAttributeChangeCallback(EndpointId endpointId, Cluster
     //     OnOnOffPostAttributeChangeCallback(endpointId, attributeId, value);
     //     break;
 
-    case ZCL_IDENTIFY_CLUSTER_ID:
-        OnIdentifyPostAttributeChangeCallback(endpointId, attributeId, value);
-        break;
+    // case ZCL_IDENTIFY_CLUSTER_ID:
+    //     OnIdentifyPostAttributeChangeCallback(endpointId, attributeId, value);
+    //     break;
 
     default:
         printf("[%s] Unhandled cluster ID:  0x%04x\r\n", TAG, clusterId);
@@ -155,24 +155,24 @@ void IdentifyTimerHandler(Layer * systemLayer, void * appState, Error error)
     }
 }
 
-void DeviceCallbacks::OnIdentifyPostAttributeChangeCallback(EndpointId endpointId, AttributeId attributeId, uint8_t * value)
-{
-    VerifyOrExit(attributeId == ZCL_IDENTIFY_TIME_ATTRIBUTE_ID, printf ("[%s] Unhandled Attribute ID: '0x%04x", TAG, attributeId));
-    VerifyOrExit(endpointId == 1, printf("[%s] Unexpected EndPoint ID: `0x%02x'", TAG, endpointId));
+// void DeviceCallbacks::OnIdentifyPostAttributeChangeCallback(EndpointId endpointId, AttributeId attributeId, uint8_t * value)
+// {
+//     VerifyOrExit(attributeId == ZCL_IDENTIFY_TIME_ATTRIBUTE_ID, printf ("[%s] Unhandled Attribute ID: '0x%04x", TAG, attributeId));
+//     VerifyOrExit(endpointId == 1, printf("[%s] Unexpected EndPoint ID: `0x%02x'", TAG, endpointId));
 
-    //statusLED1.Blink(kIdentifyTimerDelayMS * 2);
+//     //statusLED1.Blink(kIdentifyTimerDelayMS * 2);
 
-    // timerCount represents the number of callback executions before we stop the timer.
-    // value is expressed in seconds and the timer is fired every 250ms, so just multiply value by 4.
-    // Also, we want timerCount to be odd number, so the ligth state ends in the same state it starts.
-    identifyTimerCount = (*value) * 4;
+//     // timerCount represents the number of callback executions before we stop the timer.
+//     // value is expressed in seconds and the timer is fired every 250ms, so just multiply value by 4.
+//     // Also, we want timerCount to be odd number, so the ligth state ends in the same state it starts.
+//     identifyTimerCount = (*value) * 4;
 
-    //SystemLayer.CancelTimer(IdentifyTimerHandler, this);
-    //SystemLayer.StartTimer(kIdentifyTimerDelayMS, IdentifyTimerHandler, this);
+//     //SystemLayer.CancelTimer(IdentifyTimerHandler, this);
+//     //SystemLayer.StartTimer(kIdentifyTimerDelayMS, IdentifyTimerHandler, this);
 
-exit:
-    return;
-}
+// exit:
+//     return;
+// }
 
 bool emberAfBasicClusterMfgSpecificPingCallback(chip::app::Command * commandObj)
 {
