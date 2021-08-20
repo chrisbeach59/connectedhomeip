@@ -31,6 +31,10 @@
 #include <app/common/gen/ids/Attributes.h>
 #include <lib/core/CHIPEncoding.h>
 
+// Functions to be supplied by using application:
+// example implementations are in thermostat-app.cpp
+void __attribute__((weak)) thermostatClusterClearAllScheduleTransitions() {}
+
 using namespace chip;
 using namespace chip::app::Clusters::Thermostat::Attributes;
 
@@ -254,7 +258,9 @@ EmberAfStatus emberAfThermostatClusterServerPreAttributeChangedCallback(chip::En
 
 bool emberAfThermostatClusterClearWeeklyScheduleCallback(EndpointId aEndpointId, chip::app::CommandHandler * commandObj)
 {
-    // TODO
+    // 4.3.7.10 Schedule cleared and success returned
+    thermostatClusterClearAllScheduleTransitions();
+    emberAfSendImmediateDefaultResponse(EMBER_ZCL_STATUS_SUCCESS);
     return false;
 }
 bool emberAfThermostatClusterGetRelayStatusLogCallback(EndpointId aEndpointId, chip::app::CommandHandler * commandObj)
@@ -274,8 +280,35 @@ bool emberAfThermostatClusterSetWeeklyScheduleCallback(EndpointId aEndpointId, c
                                                        uint8_t numberOfTransitionsForSequence, uint8_t daysOfWeekForSequence,
                                                        uint8_t modeForSequence, uint8_t * payload)
 {
-    // TODO
-    return false;
+    EmberAfStatus status = EMBER_ZCL_STATUS_SUCCESS;
+
+    // 4.3.7.4 Set Weekly Schedule Command
+
+    // Check if the total number of transistions is greater than the thermostat supports
+    // Send INSUFFICIENT_SPACE if this is the case
+    uint8_t AllowedDailyTransitions = 0;
+
+    emberAfReadServerAttribute(aEndpointId, ZCL_THERMOSTAT_CLUSTER_ID, ZCL_NUMBER_OF_DAILY_TRANSITIONS_ATTRIBUTE_ID,
+                               &AllowedDailyTransitions, sizeof(AllowedDailyTransitions));
+
+    if (numberOfTransitionsForSequence > AllowedDailyTransitions)
+        emberAfSendImmediateDefaultResponse(EMBER_ZCL_STATUS_INSUFFICIENT_SPACE);
+    return true;
+
+    // Check if any of the setpoints is out of range
+    // send INVALID_VALUE
+    // status = EMBER_ZCL_STATUS_INVALID_VALUE;
+
+    // Check for overlaping transitions
+    // send  FAILURE
+    // status = EMBER_ZCL_STATUS_FAILURE;
+
+    // Check if multiple command has multiple days and/or multiple modes within one command
+    // status = EMBER_ZCL_STATUS_INVALID_FIELD;
+
+    emberAfSendImmediateDefaultResponse(status);
+
+    return true;
 }
 
 using namespace chip::app::Clusters::Thermostat::Attributes;

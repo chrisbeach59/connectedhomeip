@@ -43,26 +43,22 @@ using namespace chip::DeviceLayer;
 #error "Thermostat must support at least one mode"
 #endif
 
-
-
-
 typedef struct
 {
-     uint16_t TimeInSecondsFromMidnight;
+    uint16_t TimeInSecondsFromMidnight;
 #if (THERMOSTAT_SUPPORTS_HEAT == 1)
     int16_t ScheduledHeatingSetpoint;
 #endif
 #if (THERMOSTAT_SUPPORTS_COOL == 1)
     int16_t ScheduledCoolingSetpoint;
 #endif
-}thermostatScheduledTransition_t;
+} thermostatScheduledTransition_t;
 
 thermostatScheduledTransition_t thermostatDailyTransitions;
 
 // thermostatDailyTransitions.TimeInSecondsFromMidnight = 60*60*6;
 // thermostatDailyTransitions.ScheduledCoolingSetpoint = 2200;
 // thermostatDailyTransitions.ScheduledHeatingSetpoint = 2000;
-
 
 typedef struct
 {
@@ -72,24 +68,23 @@ typedef struct
 
 thermostatDailySchedule_t ThermostatWeeklySchedule[THERMOSTAT_NUM_OF_WEEKLY_TRANSITIONS];
 
-void thermostatClusterInitializeSchedule(void) 
+void thermostatClusterInitializeSchedule(void)
 {
 #if (THERMOSTAT_NUM_OF_WEEKLY_TRANSITIONS == 2)
-ThermostatWeeklySchedule[0].Days = WEEKDAY;
-ThermostatWeeklySchedule[1].Days = WEEKEND;
+    ThermostatWeeklySchedule[0].Days = WEEKDAY;
+    ThermostatWeeklySchedule[1].Days = WEEKEND;
 #elif (THERMOSTAT_NUM_OF_WEEKLY_TRANSITIONS == 7)
-ThermostatWeeklySchedule[0].Days = MONDAY;
-ThermostatWeeklySchedule[1].Days = TUESDAY;
-ThermostatWeeklySchedule[2].Days = WEDNESDAY;
-ThermostatWeeklySchedule[3].Days = THURSDAY;
-ThermostatWeeklySchedule[4].Days = FRIDAY;
-ThermostatWeeklySchedule[5].Days = SATURDAY;
-ThermostatWeeklySchedule[6].Days = SUNDAY;
+    ThermostatWeeklySchedule[0].Days = MONDAY;
+    ThermostatWeeklySchedule[1].Days = TUESDAY;
+    ThermostatWeeklySchedule[2].Days = WEDNESDAY;
+    ThermostatWeeklySchedule[3].Days = THURSDAY;
+    ThermostatWeeklySchedule[4].Days = FRIDAY;
+    ThermostatWeeklySchedule[5].Days = SATURDAY;
+    ThermostatWeeklySchedule[6].Days = SUNDAY;
 #else
 #error "Only 2 or 7 weekly transitions are supported"
 #endif
 }
-
 
 bool thermostatUpdateSchedule(uint8_t numberOfTransitionsForSequence, uint8_t daysOfWeekForSequence, uint8_t modeForSequence,
                               uint8_t * payload)
@@ -109,7 +104,7 @@ bool thermostatUpdateSchedule(uint8_t numberOfTransitionsForSequence, uint8_t da
             // Check the mode for the transition
             if ((modeForSequence & THERMOSTAT_SUPPORTED_MODES) != 0)
             {
-                uint8_t *p = payload;
+                uint8_t * p = payload;
                 int transition;
                 for (transition = 0; transition < numberOfTransitionsForSequence; transition++)
                 {
@@ -120,7 +115,7 @@ bool thermostatUpdateSchedule(uint8_t numberOfTransitionsForSequence, uint8_t da
                     {
                         TransitionHeatSetpoint = emberAfGetInt16s(p, 0, 2);
                         p += 2;
-#if ( THERMOSTAT_SUPPORTS_HEAT != 0 )
+#if (THERMOSTAT_SUPPORTS_HEAT != 0)
                         ThermostatWeeklySchedule[day].thermostatDailyTransitions[transition].ScheduledHeatingSetpoint =
                             TransitionHeatSetpoint;
 #endif
@@ -129,7 +124,7 @@ bool thermostatUpdateSchedule(uint8_t numberOfTransitionsForSequence, uint8_t da
                     {
                         TransitionCoolSetpoint = emberAfGetInt16s(p, 0, 2);
                         p += 2;
-#if ( THERMOSTAT_SUPPORTS_COOL != 0 )
+#if (THERMOSTAT_SUPPORTS_COOL != 0)
                         ThermostatWeeklySchedule[day].thermostatDailyTransitions[transition].ScheduledCoolingSetpoint =
                             TransitionCoolSetpoint;
 #endif
@@ -144,7 +139,7 @@ bool thermostatUpdateSchedule(uint8_t numberOfTransitionsForSequence, uint8_t da
 // This file provides API's to update and read data in the Matter Thermostat Cluster
 
 // This function is called when the thermostat senses that local temperature has changed to update the Matter Cluster
-bool thermostatClusterSetLocalTemperature(int16_t CurrentTemp) 
+bool thermostatClusterSetLocalTemperature(int16_t CurrentTemp)
 {
     return true;
 }
@@ -163,7 +158,7 @@ bool thermostatClusterSetOccupiedHeatingSetpoint(int16_t Setpoint)
 }
 
 // Scheduling API's
-void thermostatClusterClearAllScheduleTransitions(void)
+void thermostatClusterClearAllScheduleTransitions()
 {
     // TODO
 }
