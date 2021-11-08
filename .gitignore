@@ -57,3 +57,13 @@ docs/html
 
 # compilation database for VSCode and other Ides
 compile_commands.json
+
+*.su
+
+*.o
+
+*.a
+
+*.stamp
+
+examples/thermostat/ambd/build/chip/
