@@ -161,12 +161,19 @@ void DeviceCallbacks::OnIdentifyPostAttributeChangeCallback(EndpointId endpointI
 exit:
     return;
 }
+extern "C" { 
+    void __attribute__((weak)) SendtoThermostat(AttributeId attributeId, uint8_t *value)
+    {
+
+    }
+}
 
 void DeviceCallbacks::OnThermostatPostAttributeChangeCallback(EndpointId endpointId, AttributeId attributeId, uint8_t * value)
 {
     // TODO add some code here to get to the stat
-    VerifyOrExit(endpointId == 1, ChipLogError(DeviceLayer, TAG, "Unexpected EndPoint ID: `0x%02x'", endpointId));
 
+    VerifyOrExit(endpointId == 1, ChipLogError(DeviceLayer, TAG, "Unexpected EndPoint ID: `0x%02x'", endpointId));
+    SendtoThermostat(attributeId, value);
 exit:
     return;
 }
