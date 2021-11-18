@@ -40,7 +40,7 @@
 #include "Globals.h"
 #include "LEDWidget.h"
 
-static const char * TAG = "app-devicecallbacks";
+static const char * TAG = "app-devicecallbacks-tstat";
 
 using namespace ::chip;
 using namespace ::chip::Inet;
@@ -158,6 +158,7 @@ void DeviceCallbacks::OnIdentifyPostAttributeChangeCallback(EndpointId endpointI
     // value is expressed in seconds and the timer is fired every 250ms, so just multiply value by 4.
     // Also, we want timerCount to be odd number, so the ligth state ends in the same state it starts.
     identifyTimerCount = (*value) * 4;
+    statusLED1.Toggle();
 exit:
     return;
 }

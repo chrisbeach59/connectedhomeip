@@ -69,7 +69,7 @@ Identify gIdentify1 = {
 #define EXAMPLE_VENDOR_TAG_IP 1
 
 #ifdef CONFIG_PLATFORM_8721D
-#define STATUS_LED_GPIO_NUM PB_5
+#define STATUS_LED_GPIO_NUM PA_2
 #elif defined(CONFIG_PLATFORM_8710C)
 #define STATUS_LED_GPIO_NUM PA_20
 #else

@@ -58,3 +58,9 @@ void LEDWidget::DoSet(bool state)
         gpio_write(&gpio_led, state);
     }
 }
+
+void LEDWidget::Toggle()
+{
+    mState = ~mState;
+    gpio_write(&gpio_led, mState);
+}
