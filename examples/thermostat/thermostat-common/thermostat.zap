@@ -1209,7 +1209,7 @@
           "mfgCode": null,
           "define": "OTA_PROVIDER_CLUSTER",
           "side": "client",
-          "enabled": 1,
+          "enabled": 0,
           "commands": [
             {
               "name": "QueryImage",
@@ -1260,7 +1260,7 @@
           "mfgCode": null,
           "define": "OTA_PROVIDER_CLUSTER",
           "side": "server",
-          "enabled": 0,
+          "enabled": 1,
           "commands": [
             {
               "name": "QueryImageResponse",
@@ -6756,7 +6756,7 @@
           "mfgCode": null,
           "define": "SCENES_CLUSTER",
           "side": "server",
-          "enabled": 0,
+          "enabled": 1,
           "commands": [
             {
               "name": "AddSceneResponse",

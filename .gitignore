@@ -67,3 +67,5 @@ compile_commands.json
 *.stamp
 
 examples/thermostat/ambd/build/chip/
+
+*.zap~
