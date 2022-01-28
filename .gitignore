@@ -47,7 +47,7 @@ __pycache__
 *.egg-info
 
 # Doxygen outputs
-docs/html
+
 
 # VSCode java extensions
 .project
@@ -60,3 +60,5 @@ compile_commands.json
 
 # backup files, usually created by the ZAP tool
 *~
+
+examples/thermostat/ameba/build
