@@ -20,6 +20,7 @@ chip_device_platform = "ameba"
 chip_project_config_include = ""
 chip_system_project_config_include = ""
 chip_ble_project_config_include = ""
+chip_project_config_include = "<CHIPProjectConfig.h>"
 
 mbedtls_target = "//mbedtls:mbedtls"
 lwip_platform = "external"
@@ -36,3 +37,5 @@ custom_toolchain = "//third_party/connectedhomeip/config/ameba/toolchain:ameba"
 pw_build_PIP_CONSTRAINTS =
     [ "//third_party/connectedhomeip/scripts/constraints.txt" ]
 cpp_standard = "c++17"
+chip_enable_ota_requestor = true
+chip_enable_ota_requestor = true
