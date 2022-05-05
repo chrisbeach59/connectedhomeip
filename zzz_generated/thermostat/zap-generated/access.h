@@ -53,7 +53,6 @@
     /* Cluster: Thermostat, Attribute: min setpoint dead band, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: control sequence of operation, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: system mode, Privilege: view */ \
-    /* Cluster: User Label, Attribute: label list, Privilege: view */ \
 }
 
 // Parallel array data (cluster, *attribute*, privilege) for read attribute
@@ -82,7 +81,6 @@
     /* Cluster: Thermostat, Attribute: min setpoint dead band, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: control sequence of operation, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: system mode, Privilege: view */ \
-    /* Cluster: User Label, Attribute: label list, Privilege: view */ \
 }
 
 // Parallel array data (cluster, attribute, *privilege*) for read attribute
@@ -111,7 +109,6 @@
     /* Cluster: Thermostat, Attribute: min setpoint dead band, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: control sequence of operation, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: system mode, Privilege: view */ \
-    /* Cluster: User Label, Attribute: label list, Privilege: view */ \
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -133,7 +130,6 @@
     513, /* Cluster: Thermostat, Attribute: min setpoint dead band, Privilege: manage */ \
     513, /* Cluster: Thermostat, Attribute: control sequence of operation, Privilege: manage */ \
     513, /* Cluster: Thermostat, Attribute: system mode, Privilege: manage */ \
-    65, /* Cluster: User Label, Attribute: label list, Privilege: manage */ \
 }
 
 // Parallel array data (cluster, *attribute*, privilege) for write attribute
@@ -153,7 +149,6 @@
     25, /* Cluster: Thermostat, Attribute: min setpoint dead band, Privilege: manage */ \
     27, /* Cluster: Thermostat, Attribute: control sequence of operation, Privilege: manage */ \
     28, /* Cluster: Thermostat, Attribute: system mode, Privilege: manage */ \
-    0, /* Cluster: User Label, Attribute: label list, Privilege: manage */ \
 }
 
 // Parallel array data (cluster, attribute, *privilege*) for write attribute
@@ -173,7 +168,6 @@
     kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Attribute: min setpoint dead band, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Attribute: control sequence of operation, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Attribute: system mode, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: User Label, Attribute: label list, Privilege: manage */ \
 }
 
 ////////////////////////////////////////////////////////////////////////////////

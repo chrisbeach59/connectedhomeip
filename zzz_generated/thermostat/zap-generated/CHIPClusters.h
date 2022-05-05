@@ -30,11 +30,11 @@
 namespace chip {
 namespace Controller {
 
-class DLL_EXPORT IdentifyCluster : public ClusterBase
+class DLL_EXPORT ScenesCluster : public ClusterBase
 {
 public:
-    IdentifyCluster() : ClusterBase(app::Clusters::Identify::Id) {}
-    ~IdentifyCluster() {}
+    ScenesCluster() : ClusterBase(app::Clusters::Scenes::Id) {}
+    ~ScenesCluster() {}
 };
 
 } // namespace Controller
