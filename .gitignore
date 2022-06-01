@@ -62,6 +62,8 @@ compile_commands.json
 # backup files, usually created by the ZAP tool
 *~
 
+examples/thermostat/ameba/build/
+
 # log files
 *.log
 examples/thermostat/ameba/build
