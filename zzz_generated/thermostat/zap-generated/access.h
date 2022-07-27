@@ -30,7 +30,6 @@
 // Parallel array data (*cluster*, attribute, privilege) for read attribute
 #define GENERATED_ACCESS_READ_ATTRIBUTE__CLUSTER { \
     31, /* Cluster: Access Control, Attribute: ACL, Privilege: administer */ \
-    31, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     /* Cluster: Access Control, Attribute: SubjectsPerAccessControlEntry, Privilege: view */ \
     /* Cluster: Access Control, Attribute: TargetsPerAccessControlEntry, Privilege: view */ \
     /* Cluster: Access Control, Attribute: AccessControlEntriesPerFabric, Privilege: view */ \
@@ -46,7 +45,6 @@
     49, /* Cluster: Network Commissioning, Attribute: LastConnectErrorValue, Privilege: administer */ \
     62, /* Cluster: Operational Credentials, Attribute: NOCs, Privilege: administer */ \
     /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: view */ \
-    /* Cluster: User Label, Attribute: label list, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MinHeatSetpointLimit, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MaxHeatSetpointLimit, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MinCoolSetpointLimit, Privilege: view */ \
@@ -59,7 +57,6 @@
 // Parallel array data (cluster, *attribute*, privilege) for read attribute
 #define GENERATED_ACCESS_READ_ATTRIBUTE__ATTRIBUTE { \
     0, /* Cluster: Access Control, Attribute: ACL, Privilege: administer */ \
-    1, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     /* Cluster: Access Control, Attribute: SubjectsPerAccessControlEntry, Privilege: view */ \
     /* Cluster: Access Control, Attribute: TargetsPerAccessControlEntry, Privilege: view */ \
     /* Cluster: Access Control, Attribute: AccessControlEntriesPerFabric, Privilege: view */ \
@@ -75,7 +72,6 @@
     7, /* Cluster: Network Commissioning, Attribute: LastConnectErrorValue, Privilege: administer */ \
     0, /* Cluster: Operational Credentials, Attribute: NOCs, Privilege: administer */ \
     /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: view */ \
-    /* Cluster: User Label, Attribute: label list, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MinHeatSetpointLimit, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MaxHeatSetpointLimit, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MinCoolSetpointLimit, Privilege: view */ \
@@ -88,7 +84,6 @@
 // Parallel array data (cluster, attribute, *privilege*) for read attribute
 #define GENERATED_ACCESS_READ_ATTRIBUTE__PRIVILEGE { \
     kMatterAccessPrivilegeAdminister, /* Cluster: Access Control, Attribute: ACL, Privilege: administer */ \
-    kMatterAccessPrivilegeAdminister, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     /* Cluster: Access Control, Attribute: SubjectsPerAccessControlEntry, Privilege: view */ \
     /* Cluster: Access Control, Attribute: TargetsPerAccessControlEntry, Privilege: view */ \
     /* Cluster: Access Control, Attribute: AccessControlEntriesPerFabric, Privilege: view */ \
@@ -104,7 +99,6 @@
     kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Attribute: LastConnectErrorValue, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Operational Credentials, Attribute: NOCs, Privilege: administer */ \
     /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: view */ \
-    /* Cluster: User Label, Attribute: label list, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MinHeatSetpointLimit, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MaxHeatSetpointLimit, Privilege: view */ \
     /* Cluster: Thermostat, Attribute: MinCoolSetpointLimit, Privilege: view */ \
@@ -119,14 +113,12 @@
 // Parallel array data (*cluster*, attribute, privilege) for write attribute
 #define GENERATED_ACCESS_WRITE_ATTRIBUTE__CLUSTER { \
     31, /* Cluster: Access Control, Attribute: ACL, Privilege: administer */ \
-    31, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     40, /* Cluster: Basic, Attribute: NodeLabel, Privilege: manage */ \
     40, /* Cluster: Basic, Attribute: Location, Privilege: administer */ \
     40, /* Cluster: Basic, Attribute: LocalConfigDisabled, Privilege: manage */ \
     48, /* Cluster: General Commissioning, Attribute: Breadcrumb, Privilege: administer */ \
     49, /* Cluster: Network Commissioning, Attribute: InterfaceEnabled, Privilege: administer */ \
     63, /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: manage */ \
-    65, /* Cluster: User Label, Attribute: label list, Privilege: manage */ \
     513, /* Cluster: Thermostat, Attribute: MinHeatSetpointLimit, Privilege: manage */ \
     513, /* Cluster: Thermostat, Attribute: MaxHeatSetpointLimit, Privilege: manage */ \
     513, /* Cluster: Thermostat, Attribute: MinCoolSetpointLimit, Privilege: manage */ \
@@ -139,14 +131,12 @@
 // Parallel array data (cluster, *attribute*, privilege) for write attribute
 #define GENERATED_ACCESS_WRITE_ATTRIBUTE__ATTRIBUTE { \
     0, /* Cluster: Access Control, Attribute: ACL, Privilege: administer */ \
-    1, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     5, /* Cluster: Basic, Attribute: NodeLabel, Privilege: manage */ \
     6, /* Cluster: Basic, Attribute: Location, Privilege: administer */ \
     16, /* Cluster: Basic, Attribute: LocalConfigDisabled, Privilege: manage */ \
     0, /* Cluster: General Commissioning, Attribute: Breadcrumb, Privilege: administer */ \
     4, /* Cluster: Network Commissioning, Attribute: InterfaceEnabled, Privilege: administer */ \
     0, /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: manage */ \
-    0, /* Cluster: User Label, Attribute: label list, Privilege: manage */ \
     21, /* Cluster: Thermostat, Attribute: MinHeatSetpointLimit, Privilege: manage */ \
     22, /* Cluster: Thermostat, Attribute: MaxHeatSetpointLimit, Privilege: manage */ \
     23, /* Cluster: Thermostat, Attribute: MinCoolSetpointLimit, Privilege: manage */ \
@@ -159,14 +149,12 @@
 // Parallel array data (cluster, attribute, *privilege*) for write attribute
 #define GENERATED_ACCESS_WRITE_ATTRIBUTE__PRIVILEGE { \
     kMatterAccessPrivilegeAdminister, /* Cluster: Access Control, Attribute: ACL, Privilege: administer */ \
-    kMatterAccessPrivilegeAdminister, /* Cluster: Access Control, Attribute: Extension, Privilege: administer */ \
     kMatterAccessPrivilegeManage, /* Cluster: Basic, Attribute: NodeLabel, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Basic, Attribute: Location, Privilege: administer */ \
     kMatterAccessPrivilegeManage, /* Cluster: Basic, Attribute: LocalConfigDisabled, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Attribute: Breadcrumb, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Network Commissioning, Attribute: InterfaceEnabled, Privilege: administer */ \
     kMatterAccessPrivilegeManage, /* Cluster: Group Key Management, Attribute: GroupKeyMap, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: User Label, Attribute: label list, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Attribute: MinHeatSetpointLimit, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Attribute: MaxHeatSetpointLimit, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Attribute: MinCoolSetpointLimit, Privilege: manage */ \
@@ -185,10 +173,6 @@
     4, /* Cluster: Groups, Command: RemoveGroup, Privilege: manage */ \
     4, /* Cluster: Groups, Command: RemoveAllGroups, Privilege: manage */ \
     4, /* Cluster: Groups, Command: AddGroupIfIdentifying, Privilege: manage */ \
-    5, /* Cluster: Scenes, Command: AddScene, Privilege: manage */ \
-    5, /* Cluster: Scenes, Command: RemoveScene, Privilege: manage */ \
-    5, /* Cluster: Scenes, Command: RemoveAllScenes, Privilege: manage */ \
-    5, /* Cluster: Scenes, Command: StoreScene, Privilege: manage */ \
     48, /* Cluster: General Commissioning, Command: ArmFailSafe, Privilege: administer */ \
     48, /* Cluster: General Commissioning, Command: SetRegulatoryConfig, Privilege: administer */ \
     48, /* Cluster: General Commissioning, Command: CommissioningComplete, Privilege: administer */ \
@@ -209,8 +193,6 @@
     62, /* Cluster: Operational Credentials, Command: UpdateFabricLabel, Privilege: administer */ \
     62, /* Cluster: Operational Credentials, Command: RemoveFabric, Privilege: administer */ \
     62, /* Cluster: Operational Credentials, Command: AddTrustedRootCertificate, Privilege: administer */ \
-    513, /* Cluster: Thermostat, Command: SetWeeklySchedule, Privilege: manage */ \
-    513, /* Cluster: Thermostat, Command: ClearWeeklySchedule, Privilege: manage */ \
 }
 
 // Parallel array data (cluster, *command*, privilege) for invoke command
@@ -220,10 +202,6 @@
     3, /* Cluster: Groups, Command: RemoveGroup, Privilege: manage */ \
     4, /* Cluster: Groups, Command: RemoveAllGroups, Privilege: manage */ \
     5, /* Cluster: Groups, Command: AddGroupIfIdentifying, Privilege: manage */ \
-    0, /* Cluster: Scenes, Command: AddScene, Privilege: manage */ \
-    2, /* Cluster: Scenes, Command: RemoveScene, Privilege: manage */ \
-    3, /* Cluster: Scenes, Command: RemoveAllScenes, Privilege: manage */ \
-    4, /* Cluster: Scenes, Command: StoreScene, Privilege: manage */ \
     0, /* Cluster: General Commissioning, Command: ArmFailSafe, Privilege: administer */ \
     2, /* Cluster: General Commissioning, Command: SetRegulatoryConfig, Privilege: administer */ \
     4, /* Cluster: General Commissioning, Command: CommissioningComplete, Privilege: administer */ \
@@ -244,8 +222,6 @@
     9, /* Cluster: Operational Credentials, Command: UpdateFabricLabel, Privilege: administer */ \
     10, /* Cluster: Operational Credentials, Command: RemoveFabric, Privilege: administer */ \
     11, /* Cluster: Operational Credentials, Command: AddTrustedRootCertificate, Privilege: administer */ \
-    1, /* Cluster: Thermostat, Command: SetWeeklySchedule, Privilege: manage */ \
-    3, /* Cluster: Thermostat, Command: ClearWeeklySchedule, Privilege: manage */ \
 }
 
 // Parallel array data (cluster, command, *privilege*) for invoke command
@@ -255,10 +231,6 @@
     kMatterAccessPrivilegeManage, /* Cluster: Groups, Command: RemoveGroup, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Groups, Command: RemoveAllGroups, Privilege: manage */ \
     kMatterAccessPrivilegeManage, /* Cluster: Groups, Command: AddGroupIfIdentifying, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: AddScene, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: RemoveScene, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: RemoveAllScenes, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Scenes, Command: StoreScene, Privilege: manage */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Command: ArmFailSafe, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Command: SetRegulatoryConfig, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: General Commissioning, Command: CommissioningComplete, Privilege: administer */ \
@@ -279,8 +251,6 @@
     kMatterAccessPrivilegeAdminister, /* Cluster: Operational Credentials, Command: UpdateFabricLabel, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Operational Credentials, Command: RemoveFabric, Privilege: administer */ \
     kMatterAccessPrivilegeAdminister, /* Cluster: Operational Credentials, Command: AddTrustedRootCertificate, Privilege: administer */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Command: SetWeeklySchedule, Privilege: manage */ \
-    kMatterAccessPrivilegeManage, /* Cluster: Thermostat, Command: ClearWeeklySchedule, Privilege: manage */ \
 }
 
 ////////////////////////////////////////////////////////////////////////////////
