@@ -140,7 +140,7 @@
  * Human readable vendor name for the organization responsible for producing the device.
  */
 #ifndef CHIP_DEVICE_CONFIG_DEVICE_VENDOR_NAME
-#define CHIP_DEVICE_CONFIG_DEVICE_VENDOR_NAME "TEST_VENDOR"
+#define CHIP_DEVICE_CONFIG_DEVICE_VENDOR_NAME "Resideo"
 #endif
 
 /**
@@ -163,7 +163,7 @@
  * Human readable name of the device model.
  */
 #ifndef CHIP_DEVICE_CONFIG_DEVICE_PRODUCT_NAME
-#define CHIP_DEVICE_CONFIG_DEVICE_PRODUCT_NAME "TEST_PRODUCT"
+#define CHIP_DEVICE_CONFIG_DEVICE_PRODUCT_NAME "Mattter Thermostat"
 #endif
 
 /**
@@ -186,7 +186,7 @@
  * Human readable string identifying version of the product assigned by the device vendor.
  */
 #ifndef CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION_STRING
-#define CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION_STRING "TEST_VERSION"
+#define CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION_STRING "Pre-Production"
 #endif
 
 /**
@@ -203,7 +203,7 @@
  * persistent storage (e.g. by a factory provisioning process).
  */
 #ifndef CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION
-#define CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION 0
+#define CHIP_DEVICE_CONFIG_DEFAULT_DEVICE_HARDWARE_VERSION 1
 #endif
 
 /**
@@ -212,7 +212,7 @@
  * A string identifying the software version running on the device.
  */
 #ifndef CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING
-#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING "prerelease"
+#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION_STRING "0.9"
 #endif
 
 /**
@@ -221,7 +221,7 @@
  * A monothonic number identifying the software version running on the device.
  */
 #ifndef CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION
-#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION 0
+#define CHIP_DEVICE_CONFIG_DEVICE_SOFTWARE_VERSION 0.9
 #endif
 
 /**
@@ -231,7 +231,7 @@
  * is found in Chip NV storage.
  */
 #ifndef CHIP_DEVICE_CONFIG_TEST_SERIAL_NUMBER
-#define CHIP_DEVICE_CONFIG_TEST_SERIAL_NUMBER "TEST_SN"
+#define CHIP_DEVICE_CONFIG_TEST_SERIAL_NUMBER "1"
 #endif
 
 /**
