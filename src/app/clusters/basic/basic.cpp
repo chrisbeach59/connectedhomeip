@@ -302,12 +302,16 @@ CHIP_ERROR BasicAttrAccess::ReadLocation(AttributeValueEncoder & aEncoder)
     size_t codeLen             = 0;
 
     CHIP_ERROR err = ConfigurationMgr().GetCountryCode(location, sizeof(location), codeLen);
+
+    ChipLogProgress(DeviceLayer, "\r\nBefore Check - ReadLocation - \"%s\" len:%u \r\n", location, codeLen);
     if ((err != CHIP_NO_ERROR) || (codeLen == 0))
     {
         strncpy(&location[0], "XX", kMaxLen + 1);
         codeLen = strnlen(location, kMaxLen);
         err     = CHIP_NO_ERROR;
     }
+
+    ChipLogProgress(DeviceLayer, "\r\nReadLocation - \"%s\" len:%u \r\n", location, codeLen);
 
     ReturnErrorOnFailure(err);
     return aEncoder.Encode(chip::CharSpan(location, codeLen));

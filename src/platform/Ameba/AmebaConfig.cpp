@@ -147,11 +147,19 @@ CHIP_ERROR AmebaConfig::ReadConfigValueStr(Key key, char * buf, size_t bufSize, 
     int32_t success = 0;
 
     success = getPref_str_new(key.Namespace, key.Name, buf, bufSize, &outLen);
+     
     if (success != 0)
         ChipLogProgress(DeviceLayer, "getPref_str_new: %s/%s failed\n", key.Namespace, key.Name);
 
     if (success == 0)
     {
+        ChipLogProgress(DeviceLayer, "getPref_str_new: %s/%s = %s Len:%u\n", key.Namespace, key.Name, buf, outLen);
+        // CEB fix bug
+        // This is written with setPref_new with the strlen(x) + 1  
+        // getPref_str_new () is returning the len + NULL terminator
+        outLen--; 
+        ChipLogProgress(DeviceLayer, "fixed: %s/%s = %s Len:%u\n", key.Namespace, key.Name, buf, outLen);
+
         return CHIP_NO_ERROR;
     }
     else
@@ -241,6 +249,9 @@ CHIP_ERROR AmebaConfig::WriteConfigValueStr(Key key, const char * str, size_t st
     CHIP_ERROR err;
     chip::Platform::ScopedMemoryBuffer<char> strCopy;
 
+
+    ChipLogProgress(DeviceLayer, "\r\nWriteConfigValueStr - \"%s\" len:%u \r\n", str, strLen);
+
     if (str != NULL)
     {
         strCopy.Calloc(strLen + 1);
@@ -248,6 +259,9 @@ CHIP_ERROR AmebaConfig::WriteConfigValueStr(Key key, const char * str, size_t st
         strncpy(strCopy.Get(), str, strLen);
     }
     err = AmebaConfig::WriteConfigValueStr(key, strCopy.Get());
+
+   ChipLogProgress(DeviceLayer, "\r\n >>> Writing - \"%s\" \r\n", strCopy.Get());
+    
 exit:
     return err;
 }
